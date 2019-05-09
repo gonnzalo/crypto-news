@@ -2,12 +2,7 @@ import { gql } from "apollo-server-express";
 
 const schema = gql`
   type Query {
-    feed: Feed!
-  }
-
-  type Feed {
     links: [Link!]!
-    count: Int!
   }
 
   type Link {
@@ -20,10 +15,6 @@ const schema = gql`
     imageUrl: String!
     upVotes: Int!
     downVotes: Int!
-  }
-
-  type Mutation {
-    fechtData(url: String!): Feed
   }
 `;
 

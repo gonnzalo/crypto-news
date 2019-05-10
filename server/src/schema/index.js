@@ -3,6 +3,9 @@ import { gql } from "apollo-server-express";
 const schema = gql`
   type Query {
     links: [Link!]!
+    users: [User!]
+    user(id: ID!): User
+    me: User
   }
 
   type Link {
@@ -13,8 +16,30 @@ const schema = gql`
     source: String!
     url: String!
     imageUrl: String!
-    upVotes: Int!
-    downVotes: Int!
+    upVotes: [Vote!]!
+    downVotes: [Vote!]!
+  }
+
+  type User {
+    id: ID!
+    username: String!
+    email: String!
+  }
+
+  type Mutation {
+    signUp(username: String!, email: String!, password: String!): Token!
+    signIn(login: String!, password: String!): Token!
+    upVote(linkId: ID!): Vote
+    downVote(linkId: ID!): Vote
+  }
+  type Token {
+    token: String!
+  }
+
+  type Vote {
+    id: ID!
+    link: Link!
+    user: User!
   }
 `;
 

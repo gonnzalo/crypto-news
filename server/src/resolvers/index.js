@@ -1,5 +1,4 @@
-import query from "./Query";
-import mutation from "./Mutation";
 import link from "./Link";
+import user from "./User";
 
-export default [query, link, mutation];
+export default [link, user];

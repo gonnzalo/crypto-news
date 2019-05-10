@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
 );
 
 const models = {
+  User: sequelize.import("./user"),
   Link: sequelize.import("./link")
 };
 

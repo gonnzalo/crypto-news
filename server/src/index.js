@@ -1,5 +1,6 @@
 import express from "express";
-import { ApolloServer } from "apollo-server-express";
+import jwt from "jsonwebtoken";
+import { ApolloServer, AuthenticationError } from "apollo-server-express";
 import cors from "cors";
 import axios from "axios";
 
@@ -12,6 +13,17 @@ require("dotenv").config();
 const app = express();
 
 app.use(cors());
+
+const getMe = async req => {
+  const token = req.headers["x-token"];
+  if (token) {
+    try {
+      return await jwt.verify(token, process.env.SECRET);
+    } catch (e) {
+      throw new AuthenticationError("Your session expired. Sign in again.");
+    }
+  }
+};
 
 const server = new ApolloServer({
   typeDefs: schema,
@@ -29,8 +41,10 @@ const server = new ApolloServer({
     };
   },
   context: async ({ req }) => {
+    const me = await getMe(req);
     return {
       models,
+      me,
       secret: process.env.REACT_APP_SECRET
     };
   }
@@ -59,6 +73,7 @@ const fetchData = async () => {
     const data = result.data.Data;
 
     data.forEach(link => {
+      const date = new Date(link.published_on * 1000);
       models.Link.findOrCreate({
         where: { id: link.id },
         defaults: {
@@ -69,7 +84,8 @@ const fetchData = async () => {
           url: link.url,
           imgUrl: link.imageurl,
           upVotes: link.upvotes,
-          donwVotes: link.downvotes
+          donwVotes: link.downvotes,
+          createdAt: date.setSeconds(date.getSeconds())
         }
       }).then(([user, created]) => {
         if (created) {

@@ -83,8 +83,6 @@ const fetchData = async () => {
           source: link.source,
           url: link.url,
           imgUrl: link.imageurl,
-          upVotes: link.upvotes,
-          donwVotes: link.downvotes,
           createdAt: date.setSeconds(date.getSeconds())
         }
       }).then(([user, created]) => {

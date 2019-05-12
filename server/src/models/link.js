@@ -18,17 +18,14 @@ const link = (sequelize, DataTypes) => {
     },
     imgUrl: {
       type: DataTypes.STRING
-    },
-    upVotes: {
-      type: DataTypes.INTEGER
-    },
-    donwVotes: {
-      type: DataTypes.INTEGER
     }
   });
-  // Link.associate = models => {
-  //   Link.hasMany(models.Link, { onDelete: "CASCADE" });
-  // };
+
+  Link.associate = models => {
+    Link.hasMany(models.Like, { onDelete: "CASCADE" });
+    Link.hasMany(models.Comment, { onDelete: "CASCADE" });
+  };
+
   return Link;
 };
 export default link;

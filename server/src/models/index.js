@@ -12,8 +12,10 @@ const sequelize = new Sequelize(
 );
 
 const models = {
+  Link: sequelize.import("./link"),
   User: sequelize.import("./user"),
-  Link: sequelize.import("./link")
+  Like: sequelize.import("./like"),
+  Comment: sequelize.import("./comment")
 };
 
 Object.keys(models).forEach(key => {

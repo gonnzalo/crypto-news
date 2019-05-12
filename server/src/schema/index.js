@@ -6,6 +6,8 @@ const schema = gql`
     users: [User!]
     user(id: ID!): User
     me: User
+    comment(id: ID!): Comment!
+    like(id: ID!): Like!
   }
 
   type Link {
@@ -16,30 +18,37 @@ const schema = gql`
     source: String!
     url: String!
     imageUrl: String!
-    upVotes: [Vote!]!
-    downVotes: [Vote!]!
+    likes: [Like!]!
+    comments: [Comment!]!
   }
 
   type User {
     id: ID!
     username: String!
     email: String!
+    comments: [Comment!]
   }
 
   type Mutation {
     signUp(username: String!, email: String!, password: String!): Token!
     signIn(login: String!, password: String!): Token!
-    upVote(linkId: ID!): Vote
-    downVote(linkId: ID!): Vote
+    like(linkId: ID!): Like
+    createComment(text: String!): Comment!
+    deleteComment(id: ID!): Boolean!
   }
   type Token {
     token: String!
   }
 
-  type Vote {
-    id: ID!
+  type Like {
     link: Link!
-    user: User!
+    userId: User!
+  }
+
+  type Comment {
+    id: ID!
+    text: String!
+    userId: User!
   }
 `;
 

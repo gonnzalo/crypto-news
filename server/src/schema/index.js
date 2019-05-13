@@ -3,6 +3,7 @@ import { gql } from "apollo-server-express";
 const schema = gql`
   type Query {
     links: [Link!]!
+    link(id: ID!): Link
     users: [User!]
     user(id: ID!): User
     me: User
@@ -32,8 +33,8 @@ const schema = gql`
   type Mutation {
     signUp(username: String!, email: String!, password: String!): Token!
     signIn(login: String!, password: String!): Token!
-    like(linkId: ID!): Like
-    createComment(text: String!): Comment!
+    likeLink(linkId: ID!, isPositive: Boolean!): Like
+    createComment(text: String!, linkId: ID!): Comment!
     deleteComment(id: ID!): Boolean!
   }
   type Token {
@@ -42,13 +43,27 @@ const schema = gql`
 
   type Like {
     link: Link!
-    userId: User!
+    user: User!
+    isPositive: Boolean!
+  }
+
+  type Subscription {
+    commentCreated: CommentCreated!
+    likeCreated: LikeCreated!
+  }
+
+  type CommentCreated {
+    comment: Comment!
+  }
+
+  type LikeCreated {
+    like: Like!
   }
 
   type Comment {
     id: ID!
     text: String!
-    userId: User!
+    user: User!
   }
 `;
 

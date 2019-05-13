@@ -1,6 +1,6 @@
 const like = (sequelize, DataTypes) => {
   const Like = sequelize.define("like", {
-    liked: {
+    isPositive: {
       type: DataTypes.BOOLEAN
     }
   });

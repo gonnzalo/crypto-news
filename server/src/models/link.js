@@ -2,22 +2,35 @@ const link = (sequelize, DataTypes) => {
   const Link = sequelize.define("link", {
     id: {
       primaryKey: true,
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      unique: true,
+      allowNull: false,
+      validate: { notEmpty: true }
     },
     title: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { notEmpty: true }
     },
     body: {
-      type: DataTypes.STRING(2000)
+      type: DataTypes.STRING(2000),
+      allowNull: false,
+      validate: { notEmpty: true }
     },
     source: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { notEmpty: true }
     },
     url: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { notEmpty: true }
     },
     imgUrl: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: { notEmpty: true }
     }
   });
 

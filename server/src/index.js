@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { ApolloServer, AuthenticationError } from "apollo-server-express";
 import cors from "cors";
 import axios from "axios";
+import http from "http";
 
 import schema from "./schema";
 import resolvers from "./resolvers";
@@ -16,9 +17,10 @@ app.use(cors());
 
 const getMe = async req => {
   const token = req.headers["x-token"];
+
   if (token) {
     try {
-      return await jwt.verify(token, process.env.SECRET);
+      return await jwt.verify(token, process.env.REACT_APP_SECRET);
     } catch (e) {
       throw new AuthenticationError("Your session expired. Sign in again.");
     }
@@ -40,17 +42,27 @@ const server = new ApolloServer({
       message
     };
   },
-  context: async ({ req }) => {
-    const me = await getMe(req);
-    return {
-      models,
-      me,
-      secret: process.env.REACT_APP_SECRET
-    };
+  context: async ({ req, connection }) => {
+    if (connection) {
+      return {
+        models
+      };
+    }
+    if (req) {
+      const me = await getMe(req);
+      return {
+        models,
+        me,
+        secret: process.env.REACT_APP_SECRET
+      };
+    }
   }
 });
 
 server.applyMiddleware({ app, path: "/graphql" });
+
+const httpServer = http.createServer(app);
+server.installSubscriptionHandlers(httpServer);
 
 sequelize.sync().then(async () => {
   fetchData();
@@ -59,7 +71,7 @@ sequelize.sync().then(async () => {
     fetchData();
   }, 60 * 5000);
 
-  app.listen({ port: 8000 }, () => {
+  httpServer.listen({ port: 8000 }, () => {
     console.log("Apollo Server on http://localhost:8000/graphql");
   });
 });

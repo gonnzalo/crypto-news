@@ -1,7 +1,8 @@
 const comment = (sequelize, DataTypes) => {
   const Comment = sequelize.define("comment", {
     text: {
-      type: DataTypes.STRING(2000)
+      type: DataTypes.STRING(2000),
+      validate: { notEmpty: true }
     }
   });
 

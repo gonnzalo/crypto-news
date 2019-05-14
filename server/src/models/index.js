@@ -3,9 +3,9 @@ import Sequelize from "sequelize";
 require("dotenv").config();
 
 const sequelize = new Sequelize(
-  process.env.REACT_APP_DATABASE,
-  process.env.REACT_APP_DATABASE_USER,
-  process.env.REACT_APP_DATABASE_PASSWORD,
+  process.env.TEST_DATABASE || process.env.DATABASE,
+  process.env.DATABASE_USER,
+  process.env.DATABASE_PASSWORD,
   {
     dialect: "postgres"
   }

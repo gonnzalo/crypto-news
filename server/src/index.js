@@ -17,10 +17,9 @@ app.use(cors());
 
 const getMe = async req => {
   const token = req.headers["x-token"];
-
   if (token) {
     try {
-      return await jwt.verify(token, process.env.REACT_APP_SECRET);
+      return await jwt.verify(token, process.env.SECRET);
     } catch (e) {
       throw new AuthenticationError("Your session expired. Sign in again.");
     }
@@ -53,7 +52,7 @@ const server = new ApolloServer({
       return {
         models,
         me,
-        secret: process.env.REACT_APP_SECRET
+        secret: process.env.SECRET
       };
     }
   }
@@ -64,7 +63,9 @@ server.applyMiddleware({ app, path: "/graphql" });
 const httpServer = http.createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
-sequelize.sync().then(async () => {
+const isTest = !!process.env.TEST_DATABASE;
+
+sequelize.sync({ force: isTest }).then(async () => {
   fetchData();
 
   setInterval(() => {

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
+    "test-server": "TEST_DATABASE=mytestdatabase npm start",
     "test": "mocha --require @babel/register 'src/**/*.spec.js'"
   },
   "keywords": [],

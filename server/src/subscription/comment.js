@@ -1,1 +1,5 @@
-export const CREATED = "CREATED";
+const CREATED = "CREATED";
+const DELETED = "DELETED";
+const EDITED = "EDITED";
+
+export { CREATED, DELETED, EDITED };

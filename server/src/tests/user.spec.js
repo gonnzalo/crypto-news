@@ -2,6 +2,7 @@ import { expect } from "chai";
 import * as userApi from "./api";
 
 describe("mutations", () => {
+  let token = null;
   describe("signUp(username: String!, email: String!, password: String!): Token!", () => {
     it("returns token", async () => {
       const result = await userApi.signUp({
@@ -9,6 +10,8 @@ describe("mutations", () => {
         email: "user@test.com",
         password: "testtest"
       });
+      const response = result.data;
+      token = response.data.signUp.token;
       expect(result.data).to.be.an("object");
       expect(result.data).to.include.any.keys("data", "singUp", "token");
     });
@@ -23,14 +26,77 @@ describe("mutations", () => {
       expect(result.data).to.include.any.keys("data", "singIn", "token");
     });
   });
-  describe("signIn(login: String!, password: String!): Token!", () => {
-    it("returns token", async () => {
-      const result = await userApi.signIn({
-        login: "testuser",
-        password: "testtest"
-      });
-      expect(result.data).to.be.an("object");
-      expect(result.data).to.include.any.keys("data", "singIn", "token");
+  describe("likeLink(linkId: ID!, isPositive: Boolean!): Like", () => {
+    it("returns Like", async () => {
+      const expectedResult = {
+        data: {
+          likeLink: {
+            isPositive: true
+          }
+        }
+      };
+      const result = await userApi.likeLink(
+        {
+          linkId: 1,
+          isPositive: true
+        },
+        token
+      );
+      expect(result.data).to.eql(expectedResult);
+    });
+  });
+  describe("createComment(text: String!, linkId: ID!): Comment!", () => {
+    it("return Comment", async () => {
+      const expectedResult = {
+        data: {
+          createComment: {
+            text: "test comment"
+          }
+        }
+      };
+      const result = await userApi.createComment(
+        {
+          linkId: 1,
+          text: "test comment"
+        },
+        token
+      );
+      expect(result.data).to.eql(expectedResult);
+    });
+  });
+  describe("editComment(id: ID!, text: String!): Comment!", () => {
+    it("return Comment edit", async () => {
+      const expectedResult = {
+        data: {
+          editComment: {
+            text: "edit test comment"
+          }
+        }
+      };
+      const result = await userApi.editComment(
+        {
+          id: 1,
+          text: "edit test comment"
+        },
+        token
+      );
+      expect(result.data).to.eql(expectedResult);
+    });
+  });
+  describe("deleteComment(id: ID!): Boolean!", () => {
+    it("return true", async () => {
+      const expectedResult = {
+        data: {
+          deleteComment: true
+        }
+      };
+      const result = await userApi.deleteComment(
+        {
+          id: 1
+        },
+        token
+      );
+      expect(result.data).to.eql(expectedResult);
     });
   });
 });

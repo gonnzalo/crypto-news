@@ -1,5 +1,5 @@
 import { combineResolvers } from "graphql-resolvers";
-import { isAuthenticated, isCommentOwner } from "./authorization";
+import { isAuthenticated } from "./authorization";
 import pubsub, { EVENTS } from "../subscription";
 
 export default {

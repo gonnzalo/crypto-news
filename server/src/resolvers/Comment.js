@@ -22,7 +22,7 @@ export default {
     editComment: combineResolvers(
       isAuthenticated,
       isCommentOwner,
-      async (parent, { id, text }, { models, me }) => {
+      async (parent, { id, text }, { models }) => {
         let comment = await models.Comment.update(
           { text },
           { where: { id }, returning: true, plain: true }

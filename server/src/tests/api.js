@@ -40,3 +40,81 @@ export const signIn = async variables =>
       `,
     variables
   });
+
+export const likeLink = async (variables, token) =>
+  axios.post(
+    API_URL,
+    {
+      query: `
+    mutation($linkId: ID!, $isPositive: Boolean!) {
+      likeLink(linkId: $linkId, isPositive: $isPositive) {
+        isPositive
+      }
+    }
+      `,
+      variables
+    },
+    {
+      headers: {
+        "x-token": token
+      }
+    }
+  );
+
+export const createComment = async (variables, token) =>
+  axios.post(
+    API_URL,
+    {
+      query: `
+      mutation($linkId: ID!, $text: String!) {
+        createComment(linkId: $linkId, text: $text) {
+          text
+        }
+      }
+      `,
+      variables
+    },
+    {
+      headers: {
+        "x-token": token
+      }
+    }
+  );
+
+export const editComment = async (variables, token) =>
+  axios.post(
+    API_URL,
+    {
+      query: `
+      mutation($id: ID!, $text: String!) {
+        editComment(id: $id, text: $text) {
+          text
+        }
+      }
+      `,
+      variables
+    },
+    {
+      headers: {
+        "x-token": token
+      }
+    }
+  );
+
+export const deleteComment = async (variables, token) =>
+  axios.post(
+    API_URL,
+    {
+      query: `
+      mutation($id: ID!) {
+        deleteComment(id: $id)
+      }
+      `,
+      variables
+    },
+    {
+      headers: {
+        "x-token": token
+      }
+    }
+  );

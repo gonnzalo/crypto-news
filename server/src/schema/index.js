@@ -33,7 +33,7 @@ const schema = gql`
   type Mutation {
     signUp(username: String!, email: String!, password: String!): Token!
     signIn(login: String!, password: String!): Token!
-    likeLink(linkId: ID!, isPositive: Boolean!): Like
+    likeLink(linkId: ID!, isPositive: Boolean!): Like!
     createComment(text: String!, linkId: ID!): Comment!
     editComment(id: ID!, text: String!): Comment!
     deleteComment(id: ID!): Boolean!

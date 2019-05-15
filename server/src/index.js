@@ -63,20 +63,6 @@ server.applyMiddleware({ app, path: "/graphql" });
 const httpServer = http.createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
-const isTest = !!process.env.TEST_DATABASE;
-
-sequelize.sync({ force: isTest }).then(async () => {
-  fetchData();
-
-  setInterval(() => {
-    fetchData();
-  }, 60 * 5000);
-
-  httpServer.listen({ port: 8000 }, () => {
-    console.log("Apollo Server on http://localhost:8000/graphql");
-  });
-});
-
 const fetchData = async () => {
   try {
     const result = await axios(
@@ -100,7 +86,7 @@ const fetchData = async () => {
         }
       }).then(([user, created]) => {
         if (created) {
-          console.log("new link was created");
+          // console.log("new link was created");
         }
       });
     });
@@ -108,3 +94,29 @@ const fetchData = async () => {
     throw error;
   }
 };
+
+const isTest = !!process.env.TEST_DATABASE;
+
+sequelize.sync({ force: isTest }).then(async () => {
+  if (isTest) {
+    // Create test link
+    models.Link.create({
+      id: 1,
+      title: "tittle test",
+      body: "body test",
+      source: "source test",
+      url: "url-test.com",
+      imgUrl: "img-test.com"
+    });
+  }
+
+  fetchData();
+
+  setInterval(() => {
+    fetchData();
+  }, 60 * 5000);
+
+  httpServer.listen({ port: 8000 }, () => {
+    console.log("Apollo Server on http://localhost:8000/graphql");
+  });
+});

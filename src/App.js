@@ -1,44 +1,48 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import gql from "graphql-tag";
+import { Query } from "react-apollo";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import "./App.css";
 
-// https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=c0133cd696ef40fb95aa5ef386c62da0   for top heading.
+// const GET_LINKS = gql`
+//   {
+//     links {
+//       title
+//       id
+//     }
+//   }
+// `;
 
-function App() {
-  const [feed, setFeed] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+// <Query query={GET_LINKS}>
+//       {({ loading, error, data }) => {
+//         if (loading) return "Loading...";
+//         if (error) return `Error! ${error.message}`;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
+//         return (
+//           <div>
+//             {data.links.map(link => (
+//               <div key={link.id}>
+//                 <h5>{link.title}</h5>
+//               </div>
+//             ))}
+//           </div>
+//         );
+//       }}
+//     </Query>
 
-      try {
-        const result = await axios(
-          "https://newsapi.org/v2/everything?q=bitcoin&from=2019-05-08&sortBy=publishedAt&apiKey=c0133cd696ef40fb95aa5ef386c62da0"
-        );
-        setFeed(result.data.articles);
-        console.log(result.data.articles[0].content);
-      } catch (error) {
-        setIsError(true);
-      }
-
-      setIsLoading(false);
-    };
-
-    fetchData();
-  }, []);
-
+const App = () => {
   return (
-    <div>
+    <>
       <Header />
-      {feed && feed[0].description}
+      <div className="app-container">
+        <section className="news-timeline">timeline</section>
+        <section className="news-open">open</section>
+      </div>
       <Footer />
-    </div>
+    </>
   );
-}
+};
 
 export default App;

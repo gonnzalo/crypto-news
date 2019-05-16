@@ -3,6 +3,12 @@ import { isAuthenticated } from "./authorization";
 import pubsub, { EVENTS } from "../subscription";
 
 export default {
+  Query: {
+    like: async (parent, { id }, { models }) => {
+      return models.Like.findByPk(id);
+    }
+  },
+
   Like: {
     user: async (like, args, { models }) => {
       return models.User.findByPk(like.userId);

@@ -4,41 +4,23 @@ import { Query } from "react-apollo";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import LinkList from "./components/LinkList/LinkList";
+import LinkOpen from "./components/LinkOpen/LinkOpen";
 import "./App.css";
 
-// const GET_LINKS = gql`
-//   {
-//     links {
-//       title
-//       id
-//     }
-//   }
-// `;
-
-// <Query query={GET_LINKS}>
-//       {({ loading, error, data }) => {
-//         if (loading) return "Loading...";
-//         if (error) return `Error! ${error.message}`;
-
-//         return (
-//           <div>
-//             {data.links.map(link => (
-//               <div key={link.id}>
-//                 <h5>{link.title}</h5>
-//               </div>
-//             ))}
-//           </div>
-//         );
-//       }}
-//     </Query>
-
 const App = () => {
+  const [feed, setFeed] = useState(null);
+
+  const handleClick = feed => {
+    setFeed(feed);
+  };
+
   return (
     <>
       <Header />
       <div className="app-container">
-        <section className="news-timeline">timeline</section>
-        <section className="news-open">open</section>
+        <LinkList handleClick={handleClick} />
+        <LinkOpen feed={feed} />
       </div>
       <Footer />
     </>

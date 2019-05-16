@@ -1,0 +1,6 @@
+.link-list-container {
+  height: 100%;
+  width: 60%;
+  background-color: rgb(204, 204, 204);
+  overflow-y: scroll;
+}

@@ -1,0 +1,23 @@
+.link-open-container {
+  height: 100%;
+  width: 40%;
+  background-color: rgb(255, 255, 255);
+}
+
+.open-title {
+  margin: 1.5rem 1rem;
+  overflow-wrap: break-word;
+}
+
+.open-source {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.open-body {
+  margin: 1rem;
+}
+
+.icon-link {
+  font-size: 1rem;
+}

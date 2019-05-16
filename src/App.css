@@ -3,15 +3,6 @@
   display: flex;
 }
 
-.news-timeline {
-  height: 100%;
-  width: 60%;
-  background-color: azure;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .news-open {
   height: 100%;
   width: 40%;

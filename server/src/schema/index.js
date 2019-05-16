@@ -45,7 +45,7 @@ const schema = gql`
   type Like {
     link: Link!
     user: User!
-    isPositive: Boolean!
+    isPositive: Boolean
   }
 
   type Subscription {

@@ -15,6 +15,13 @@ export default {
           linkId: link.id
         }
       });
+    },
+    likes: async (link, args, { models }) => {
+      return models.Like.findAll({
+        where: {
+          linkId: link.id
+        }
+      });
     }
   }
 };

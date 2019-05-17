@@ -51,8 +51,13 @@ header {
   padding-right: 4rem;
 }
 
-a.link-effect {
-  text-decoration: none;
+.btns-log {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
   position: relative;
   margin-bottom: 0;
   padding-bottom: 4px;
@@ -60,7 +65,7 @@ a.link-effect {
   transition: 0.4s;
 }
 
-a.link-effect:after {
+.btns-log:after {
   content: "";
   position: absolute;
   right: 0;
@@ -73,7 +78,7 @@ a.link-effect:after {
   transition-timing-function: ease-out;
 }
 
-a.link-effect:hover:after {
+.btns-log:hover:after {
   left: 0;
   right: auto;
   width: 100%;
@@ -132,7 +137,7 @@ a.link-effect:hover:after {
     justify-content: space-evenly;
   }
 
-  .nav-list li > a {
+  .nav-list li > button {
     color: #fff;
     font-size: 2rem;
     text-transform: uppercase;
@@ -142,7 +147,7 @@ a.link-effect:hover:after {
     padding-right: 0rem;
   }
 
-  a.link-effect:after {
+  .btns-log:after {
     content: "";
     position: absolute;
     right: 0;
@@ -155,13 +160,9 @@ a.link-effect:hover:after {
     transition-timing-function: ease-out;
   }
 
-  a.link-effect:hover:after {
+  .btns-log:hover:after {
     left: 0;
     right: auto;
     width: 100%;
-  }
-
-  .link-active {
-    border-bottom: 4px solid #fff;
   }
 }

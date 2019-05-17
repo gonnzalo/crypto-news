@@ -1,11 +1,12 @@
 .link-open-container {
+  overflow-y: auto;
   height: 100%;
   width: 40%;
   background-color: rgb(255, 255, 255);
+  padding: 1rem;
 }
 
 .open-title {
-  margin: 1.5rem 1rem;
   overflow-wrap: break-word;
 }
 
@@ -15,9 +16,20 @@
 }
 
 .open-body {
-  margin: 1rem;
+  margin: 1rem 0rem;
 }
 
 .icon-link {
   font-size: 1rem;
+}
+
+.open-image {
+  min-width: 100%;
+  margin-top: 1rem;
+}
+
+.btn-comment {
+  min-width: 100%;
+  padding: 0.5rem;
+  text-transform: uppercase;
 }

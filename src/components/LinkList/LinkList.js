@@ -13,7 +13,16 @@ const GET_LINKS = gql`
       id
       source
       url
+      imgUrl
       createdAt
+      comments {
+        id
+        text
+        createdAt
+        user {
+          username
+        }
+      }
     }
   }
 `;

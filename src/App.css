@@ -2,12 +2,3 @@
   height: calc(100vh - 210px);
   display: flex;
 }
-
-.news-open {
-  height: 100%;
-  width: 40%;
-  background-color: bisque;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}

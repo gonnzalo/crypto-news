@@ -11,6 +11,8 @@
 # production
 /build
 
+/src/components/Auth
+
 # misc
 .DS_Store
 .env.local
@@ -22,3 +24,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# auth
+
+/src/components/Auth

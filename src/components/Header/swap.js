@@ -11,9 +11,9 @@ const Header = () => {
     setBurger(!isBurgerActive);
   };
 
-  const logout = () => {
+  logout = () => {
     auth.logout();
-    // this.props.history.replace("/");
+    this.props.history.replace("/");
   };
 
   return (
@@ -27,23 +27,17 @@ const Header = () => {
         >
           <ul className="nav-list">
             <li>
-              {auth.isAuthenticated() ? (
-                <button
-                  type="button"
-                  className="btns-log"
-                  onClick={() => logout()}
-                >
-                  Log out{" "}
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="btns-log"
-                  onClick={() => auth.login()}
-                >
-                  Log In
-                </button>
-              )}
+              <button type="button" className="btns-log">
+                {auth.isAuthenticated() ? (
+                  <button className="btns-log" onClick={() => logout()}>
+                    Log out{" "}
+                  </button>
+                ) : (
+                  <button className="btns-log" onClick={() => auth.login()}>
+                    Log In
+                  </button>
+                )}
+              </button>
             </li>
             <li>
               <button type="button" className="btns-log">

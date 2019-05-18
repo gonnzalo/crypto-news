@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import LinkList from "./components/LinkList/LinkList";
 import LinkOpen from "./components/LinkOpen/LinkOpen";
+import Login from "./components/Login/Login";
 import "./App.css";
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <LinkList handleClick={handleClick} />
         <LinkOpen feed={feed} />
       </div>
+      <Login />
       <Footer />
     </>
   );

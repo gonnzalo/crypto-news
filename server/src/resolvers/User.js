@@ -36,7 +36,7 @@ export default {
         password
       });
 
-      return { token: createToken(user, secret, "30m") };
+      return { token: createToken(user, secret, "120m") };
     },
 
     signIn: async (parent, { login, password }, { models, secret }) => {

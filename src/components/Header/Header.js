@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import auth from "../Auth/Auth";
 
 import "./Header.css";
 import "./hamburger.css";
@@ -9,11 +8,6 @@ const Header = () => {
 
   const handleCLik = () => {
     setBurger(!isBurgerActive);
-  };
-
-  const logout = () => {
-    auth.logout();
-    // this.props.history.replace("/");
   };
 
   return (
@@ -27,23 +21,9 @@ const Header = () => {
         >
           <ul className="nav-list">
             <li>
-              {auth.isAuthenticated() ? (
-                <button
-                  type="button"
-                  className="btns-log"
-                  onClick={() => logout()}
-                >
-                  Log out{" "}
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className="btns-log"
-                  onClick={() => auth.login()}
-                >
-                  Log In
-                </button>
-              )}
+              <button type="button" className="btns-log">
+                Log in
+              </button>
             </li>
             <li>
               <button type="button" className="btns-log">

@@ -31,7 +31,7 @@ const LinkOpen = ({ feed }) => {
           </div>
           <img src={feed.imgUrl} alt="news" className="open-image" />
           <p className="open-body">{feed.body}</p>
-          <Comments comments={feed.comments} />
+          <Comments comments={feed.comments} linkId={feed.id} />
           <div />
         </>
       )}

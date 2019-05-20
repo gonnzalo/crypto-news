@@ -16,49 +16,57 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   return (
-    <Mutation mutation={SIGN_UP}>
-      {(signUp, { loading, error, data }) => {
-        if (data) {
-          const { token } = data.signUp;
-          localStorage.setItem("x-token", token);
-        }
-        return (
-          <div>
-            <form
-              onSubmit={e => {
-                e.preventDefault();
-                signUp({ variables: { username, email, password } });
-              }}
-            >
-              <input
-                name="username"
-                value={username}
-                onChange={e => setUsername(e.target.value)}
-                type="text"
-                placeholder="Full Name"
-              />
-              <input
-                name="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                type="text"
-                placeholder="Email Address"
-              />
-              <input
-                name="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                type="password"
-                placeholder="Password"
-              />
-              <input type="submit" value="Submit" />
-            </form>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error, Please try again</p>}
-          </div>
-        );
-      }}
-    </Mutation>
+    <>
+      <Mutation mutation={SIGN_UP}>
+        {(signUp, { loading, error, data, client }) => {
+          if (data) {
+            const { token } = data.signUp;
+            localStorage.setItem("x-token", token);
+            client.writeData({
+              data: {
+                isLoggedIn: true
+              }
+            });
+          }
+          return (
+            <div>
+              <form
+                onSubmit={e => {
+                  signUp({ variables: { username, email, password } });
+                  e.preventDefault();
+                }}
+              >
+                <input
+                  name="username"
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  type="text"
+                  placeholder="Full Name"
+                />
+                <input
+                  name="email"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  type="text"
+                  placeholder="Email Address"
+                />
+                <input
+                  name="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  type="password"
+                  placeholder="Password"
+                  autoComplete="on"
+                />
+                <input type="submit" value="Submit" />
+              </form>
+              {loading && <p>Loading...</p>}
+              {error && <p>Error, Please try again</p>}
+            </div>
+          );
+        }}
+      </Mutation>
+    </>
   );
 };
 

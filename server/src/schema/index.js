@@ -35,6 +35,7 @@ const schema = gql`
     signIn(login: String!, password: String!): Token!
     likeLink(linkId: ID!, isPositive: Boolean!): Like!
     createComment(text: String!, linkId: ID!): Comment!
+    replyComment(text: String!, commentId: ID!): Comment!
     editComment(id: ID!, text: String!): Comment!
     deleteComment(id: ID!): Boolean!
   }
@@ -49,26 +50,10 @@ const schema = gql`
   }
 
   type Subscription {
-    commentCreated: CommentCreated!
-    commentDeleted: CommentDeleted!
-    commentEdited: CommentEdit!
-    likeCreated: LikeCreated!
-  }
-
-  type CommentCreated {
-    comment: Comment!
-  }
-
-  type CommentDeleted {
-    comment: Comment!
-  }
-
-  type CommentEdit {
-    comment: Comment!
-  }
-
-  type LikeCreated {
-    like: Like!
+    commentCreated: Comment
+    commentDeleted: Comment
+    commentEdited: Comment
+    likeCreated: Like
   }
 
   type Comment {
@@ -77,6 +62,15 @@ const schema = gql`
     user: User!
     createdAt: String!
     updatedAt: String!
+    replies: [Comment!]!
+  }
+
+  type Reply {
+    id: ID
+    text: String
+    user: User
+    createdAt: String
+    updatedAt: String
   }
 `;
 

@@ -13,9 +13,24 @@ export default {
           linkId
         });
         pubsub.publish(EVENTS.COMMENT.CREATED, {
-          commentCreated: { comment }
+          commentCreated: comment
         });
         return comment;
+      }
+    ),
+    replyComment: combineResolvers(
+      isAuthenticated,
+      async (parent, { text, commentId, linkId }, { models, me }) => {
+        const reply = await models.Comment.create({
+          text,
+          userId: me.id,
+          commentId,
+          linkId
+        });
+        // pubsub.publish(EVENTS.COMMENT.CREATED, {
+        //   commentCreated: comment
+        // });
+        return reply;
       }
     ),
 
@@ -30,7 +45,7 @@ export default {
         [, comment] = comment;
 
         pubsub.publish(EVENTS.COMMENT.EDITED, {
-          commentEdited: { comment }
+          commentEdited: comment
         });
         return comment;
       }
@@ -44,7 +59,7 @@ export default {
         const deleted = await models.Comment.destroy({ where: { id } });
         if (deleted) {
           pubsub.publish(EVENTS.COMMENT.DELETED, {
-            commentDeleted: { comment }
+            commentDeleted: comment
           });
           return deleted;
         }
@@ -56,6 +71,13 @@ export default {
   Comment: {
     user: async (comment, args, { models }) => {
       return models.User.findByPk(comment.userId);
+    },
+    replies: async (comment, args, { models }) => {
+      return models.Comment.findAll({
+        where: {
+          commentId: comment.id
+        }
+      });
     }
   },
 

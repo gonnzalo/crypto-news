@@ -22,6 +22,14 @@ const GET_LINKS = gql`
         user {
           username
         }
+        replies {
+          id
+          text
+          createdAt
+          user {
+            username
+          }
+        }
       }
     }
   }

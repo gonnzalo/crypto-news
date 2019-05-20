@@ -5,7 +5,7 @@ import {
   faExternalLinkAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Comments from "../Comments/Comments";
+import CommentPage from "../CommentPage/CommentPage";
 import timeDifferenceForDate from "../utils";
 import "./LinkOpen.css";
 
@@ -31,7 +31,7 @@ const LinkOpen = ({ feed }) => {
           </div>
           <img src={feed.imgUrl} alt="news" className="open-image" />
           <p className="open-body">{feed.body}</p>
-          <Comments comments={feed.comments} linkId={feed.id} />
+          <CommentPage comments={feed.comments} linkId={feed.id} />
           <div />
         </>
       )}

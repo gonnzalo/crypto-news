@@ -7,6 +7,8 @@ const comment = (sequelize, DataTypes) => {
   });
 
   Comment.associate = models => {
+    Comment.hasMany(models.Comment, { onDelete: "CASCADE" });
+    Comment.belongsTo(models.Comment, { onDelete: "CASCADE" });
     Comment.belongsTo(models.Link, { onDelete: "CASCADE" });
     Comment.belongsTo(models.User, { onDelete: "CASCADE" });
   };

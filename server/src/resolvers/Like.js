@@ -40,7 +40,7 @@ export default {
           return result;
         });
         pubsub.publish(EVENTS.LIKE.CREATED, {
-          likeCreated: { like }
+          likeCreated: like
         });
         return like;
       }

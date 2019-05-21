@@ -16,7 +16,7 @@ const Header = () => {
         <div className="logo">
           <h1>NEWS</h1>
         </div>
-        <nav
+        {/* <nav
           className={`${isBurgerActive ? "navbar navbar-active" : "navbar"}`}
         >
           <ul className="nav-list">
@@ -31,7 +31,7 @@ const Header = () => {
               </button>
             </li>
           </ul>
-        </nav>
+        </nav> */}
         <button
           className={`${
             isBurgerActive

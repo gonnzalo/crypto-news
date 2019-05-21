@@ -21,16 +21,6 @@
   font-size: 0.8rem;
 }
 
-.feed-likes {
-  text-align: right;
-  flex: 1 0 10%;
-}
-
-.icon-thumb {
-  margin: 0 0.5rem;
-  color: rgb(211, 211, 211);
-}
-
 .icon-link {
   margin: 0 0.4rem;
   color: rgb(211, 211, 211);

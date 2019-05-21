@@ -1,5 +1,6 @@
 header {
-  width: 100%;
+  margin-left: 120px;
+  width: calc(100% - 120px);
   text-decoration: none;
   z-index: 1000;
   transition: 0.2s ease-in;
@@ -18,7 +19,7 @@ header {
 }
 
 .header {
-  background-color: rgb(247, 247, 247);
+  background-color: rgb(255, 255, 255);
 }
 
 .logo h1 a {

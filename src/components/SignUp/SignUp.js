@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
-import "./Login.css";
+import "./SignUp.css";
 
 const SIGN_UP = gql`
   mutation($username: String!, $email: String!, $password: String!) {
@@ -12,7 +12,7 @@ const SIGN_UP = gql`
   }
 `;
 
-const Login = ({ handleLogin }) => {
+const SignUp = ({ handleSignUp }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,10 +29,10 @@ const Login = ({ handleLogin }) => {
                 isLoggedIn: true
               }
             });
-            handleLogin();
+            handleSignUp();
           }
           return (
-            <div className="login-container">
+            <div className="SignUp-container">
               <form
                 onSubmit={e => {
                   signUp({ variables: { username, email, password } });
@@ -79,7 +79,7 @@ const Login = ({ handleLogin }) => {
                     className="input-form"
                   />
                 </label>
-                <input type="submit" value="Login" className="submit-form" />
+                <input type="submit" value="SignUp" className="submit-form" />
               </form>
               {loading && <p>Loading...</p>}
               {error && <p>Error, Please try again</p>}
@@ -91,4 +91,4 @@ const Login = ({ handleLogin }) => {
   );
 };
 
-export default Login;
+export default SignUp;

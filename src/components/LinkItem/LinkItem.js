@@ -1,11 +1,8 @@
 import React from "react";
-import {
-  faThumbsUp,
-  faThumbsDown,
-  faLink
-} from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import timeDifferenceForDate from "../utils";
+import Likes from "../Likes/Likes";
 
 import "./LinkItem.css";
 
@@ -26,12 +23,11 @@ const LinkItem = ({ feed, handleClick }) => {
           <span>{feed.source}</span>
         </a>
       </span>
-      <div className="feed-likes">
-        <span>0</span>
-        <FontAwesomeIcon icon={faThumbsUp} className="icon-thumb" />
-        <span>1</span>
-        <FontAwesomeIcon icon={faThumbsDown} className="icon-thumb" />
-      </div>
+      <Likes
+        upLikes={feed.upLikes}
+        downLikes={feed.downLikes}
+        linkId={feed.id}
+      />
     </div>
   );
 };

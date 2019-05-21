@@ -16,11 +16,24 @@ export default {
         }
       });
     },
-    likes: async (link, args, { models }) => {
-      return models.Like.findAll({
+    upLikes: async (link, args, { models }) => {
+      return models.Like.findAndCountAll({
         where: {
-          linkId: link.id
+          linkId: link.id,
+          isPositive: true
         }
+      }).then(result => {
+        return result.count;
+      });
+    },
+    downLikes: async (link, args, { models }) => {
+      return models.Like.findAndCountAll({
+        where: {
+          linkId: link.id,
+          isPositive: false
+        }
+      }).then(result => {
+        return result.count;
       });
     }
   }

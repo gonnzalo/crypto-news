@@ -1,0 +1,24 @@
+.feed-likes {
+  text-align: right;
+  flex: 1 0 10%;
+}
+
+.icon-thumb {
+  margin: 0 0.5rem;
+  color: rgb(211, 211, 211);
+}
+
+.icon-green {
+  color: rgb(65, 187, 65);
+}
+
+.icon-red {
+  color: rgb(235, 75, 75);
+}
+
+.btn-like {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

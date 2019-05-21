@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./CommentCreate.css";
+import "./CommentReply.css";
 
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
-const ADD_COMMENT = gql`
-  mutation($text: String!, $linkId: ID!) {
-    createComment(text: $text, linkId: $linkId) {
+const ADD_REPLY = gql`
+  mutation($text: String!, $commentId: ID!) {
+    replyComment(text: $text, commentId: $commentId) {
       id
       text
       createdAt
@@ -14,31 +14,22 @@ const ADD_COMMENT = gql`
         id
         username
       }
-      replies {
-        id
-        text
-        createdAt
-        user {
-          id
-          username
-        }
-      }
     }
   }
 `;
 
-const CommentCreate = ({ linkId }) => {
+const CommentReply = ({ commentId }) => {
   const [comment, setComment] = useState("");
   return (
-    <Mutation mutation={ADD_COMMENT}>
-      {(addComment, { loading, error, data }) => {
+    <Mutation mutation={ADD_REPLY}>
+      {(addReply, { loading, error, data }) => {
         return (
           <div className="comments-container">
             <form
               className="comemnt-create"
               onSubmit={e => {
                 e.preventDefault();
-                addComment({ variables: { text: comment, linkId } });
+                addReply({ variables: { text: comment, commentId } });
                 setComment("");
               }}
             >
@@ -57,4 +48,4 @@ const CommentCreate = ({ linkId }) => {
   );
 };
 
-export default CommentCreate;
+export default CommentReply;

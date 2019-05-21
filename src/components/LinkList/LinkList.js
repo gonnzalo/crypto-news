@@ -15,11 +15,14 @@ const GET_LINKS = gql`
       url
       imgUrl
       createdAt
+      upLikes
+      downLikes
       comments {
         id
         text
         createdAt
         user {
+          id
           username
         }
         replies {
@@ -27,6 +30,7 @@ const GET_LINKS = gql`
           text
           createdAt
           user {
+            id
             username
           }
         }

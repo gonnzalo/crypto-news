@@ -1,6 +1,8 @@
 import React from "react";
 import timeDifferenceForDate from "../utils";
 
+import CommentReply from "../CommentReply/CommentReply";
+
 import "./Comments.css";
 
 const Comments = ({ comments }) => {
@@ -25,6 +27,7 @@ const Comments = ({ comments }) => {
       </div>
       <div className="comment-text">
         <p>{comment.text}</p>
+        <CommentReply commentId={comment.id} />
         {comment.replies && nestedReplies(comment.replies)}
       </div>
     </div>

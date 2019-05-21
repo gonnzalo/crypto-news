@@ -19,7 +19,8 @@ const schema = gql`
     source: String!
     url: String!
     imgUrl: String!
-    likes: [Like!]!
+    upLikes: String!
+    downLikes: String!
     comments: [Comment!]!
   }
 

@@ -5,14 +5,23 @@ import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
 const ADD_REPLY = gql`
-  mutation($text: String!, $commentId: ID!) {
-    replyComment(text: $text, commentId: $commentId) {
+  mutation($text: String!, $commentId: ID!, $isReply: Boolean!) {
+    createComment(text: $text, commentId: $commentId, isReply: $isReply) {
       id
       text
       createdAt
       user {
         id
         username
+      }
+      replies {
+        id
+        text
+        createdAt
+        user {
+          id
+          username
+        }
       }
     }
   }
@@ -23,13 +32,17 @@ const CommentReply = ({ commentId }) => {
   return (
     <Mutation mutation={ADD_REPLY}>
       {(addReply, { loading, error, data }) => {
+        if (loading) return "Loading...";
+        if (error) return `Error! ${error.message}`;
         return (
           <div className="comments-container">
             <form
               className="comemnt-create"
               onSubmit={e => {
                 e.preventDefault();
-                addReply({ variables: { text: comment, commentId } });
+                addReply({
+                  variables: { text: comment, commentId, isReply: true }
+                });
                 setComment("");
               }}
             >

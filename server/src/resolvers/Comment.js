@@ -3,36 +3,56 @@ import { isAuthenticated, isCommentOwner } from "./authorization";
 import pubsub, { EVENTS } from "../subscription";
 
 export default {
+  Query: {
+    comments: async (parent, { linkId }, { models }) => {
+      return models.Comment.findAll({
+        where: {
+          linkId
+        }
+      });
+    }
+  },
   Mutation: {
     createComment: combineResolvers(
       isAuthenticated,
-      async (parent, { text, linkId }, { models, me }) => {
+      async (parent, { text, linkId, commentId, isReply }, { models, me }) => {
         const comment = await models.Comment.create({
           text,
           userId: me.id,
-          linkId
+          linkId,
+          commentId,
+          isReply
         });
-        pubsub.publish(EVENTS.COMMENT.CREATED, {
-          commentCreated: comment
-        });
+        if (isReply) {
+          const reply = await models.Comment.findByPk(commentId);
+          pubsub.publish(EVENTS.COMMENT.CREATED, {
+            commentCreated: reply
+          });
+        } else {
+          pubsub.publish(EVENTS.COMMENT.CREATED, {
+            commentCreated: comment
+          });
+        }
         return comment;
       }
     ),
-    replyComment: combineResolvers(
-      isAuthenticated,
-      async (parent, { text, commentId, linkId }, { models, me }) => {
-        const reply = await models.Comment.create({
-          text,
-          userId: me.id,
-          commentId,
-          linkId
-        });
-        // pubsub.publish(EVENTS.COMMENT.CREATED, {
-        //   commentCreated: comment
-        // });
-        return reply;
-      }
-    ),
+    // replyComment: combineResolvers(
+    //   isAuthenticated,
+    //   async (parent, { text, commentId, linkId }, { models, me }) => {
+    //     const reply = await models.Comment.create({
+    //       text,
+    //       userId: me.id,
+    //       commentId,
+    //       linkId
+    //     });
+
+    //     console.log(comment);
+    //     pubsub.publish(EVENTS.COMMENT.REPLAY, {
+    //       commentCreated: reply
+    //     });
+    //     return reply;
+    //   }
+    // ),
 
     editComment: combineResolvers(
       isAuthenticated,
@@ -84,6 +104,9 @@ export default {
   Subscription: {
     commentCreated: {
       subscribe: () => pubsub.asyncIterator(EVENTS.COMMENT.CREATED)
+    },
+    commentReplied: {
+      subscribe: () => pubsub.asyncIterator(EVENTS.COMMENT.REPLIED)
     },
     commentEdited: {
       subscribe: () => pubsub.asyncIterator(EVENTS.COMMENT.EDITED)

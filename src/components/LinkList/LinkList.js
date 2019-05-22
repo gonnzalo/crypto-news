@@ -17,24 +17,6 @@ const GET_LINKS = gql`
       createdAt
       upLikes
       downLikes
-      comments {
-        id
-        text
-        createdAt
-        user {
-          id
-          username
-        }
-        replies {
-          id
-          text
-          createdAt
-          user {
-            id
-            username
-          }
-        }
-      }
     }
   }
 `;

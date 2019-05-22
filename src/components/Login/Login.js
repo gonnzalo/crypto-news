@@ -4,25 +4,24 @@ import { Mutation } from "react-apollo";
 
 import "./Login.css";
 
-const SIGN_UP = gql`
-  mutation($username: String!, $email: String!, $password: String!) {
-    signUp(username: $username, email: $email, password: $password) {
+const SIGN_IN = gql`
+  mutation($login: String!, $password: String!) {
+    signIn(login: $login, password: $password) {
       token
     }
   }
 `;
 
-const Login = ({ handleLogin }) => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+const Login = ({ handleLogin, closeLogin }) => {
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <>
-      <Mutation mutation={SIGN_UP}>
-        {(signUp, { loading, error, data, client }) => {
+      <Mutation mutation={SIGN_IN}>
+        {(signIn, { loading, error, data, client }) => {
           if (data) {
-            const { token } = data.signUp;
+            const { token } = data.signIn;
             localStorage.setItem("x-token", token);
             client.writeData({
               data: {
@@ -33,35 +32,30 @@ const Login = ({ handleLogin }) => {
           }
           return (
             <div className="login-container">
+              <button
+                type="button"
+                className="submit-close"
+                name="submit-close"
+                onClick={closeLogin}
+              >
+                x
+              </button>
               <form
                 onSubmit={e => {
-                  signUp({ variables: { username, email, password } });
+                  signIn({ variables: { login, password } });
                   e.preventDefault();
                 }}
                 className="form-container"
               >
-                <label htmlFor="username" className="label-form">
-                  Username
+                <label htmlFor="login" className="label-form">
+                  login
                   <input
-                    name="username"
-                    id="username"
-                    value={username}
-                    onChange={e => setUsername(e.target.value)}
+                    name="login"
+                    id="login"
+                    value={login}
+                    onChange={e => setLogin(e.target.value)}
                     type="text"
                     placeholder="Full Name"
-                    className="input-form"
-                  />
-                </label>
-
-                <label htmlFor="email" className="label-form">
-                  Email
-                  <input
-                    name="email"
-                    id="email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                    type="text"
-                    placeholder="Email Address"
                     className="input-form"
                   />
                 </label>

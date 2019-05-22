@@ -12,7 +12,7 @@ const SIGN_UP = gql`
   }
 `;
 
-const SignUp = ({ handleSignUp }) => {
+const SignUp = ({ handleSignUp, closeLogin }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +33,14 @@ const SignUp = ({ handleSignUp }) => {
           }
           return (
             <div className="SignUp-container">
+              <button
+                type="button"
+                className="submit-close"
+                name="submit-close"
+                onClick={closeLogin}
+              >
+                x
+              </button>
               <form
                 onSubmit={e => {
                   signUp({ variables: { username, email, password } });

@@ -7,7 +7,7 @@ const schema = gql`
     users: [User!]
     user(id: ID!): User
     me: User
-    comment(id: ID!): Comment!
+    comments(linkId: ID!): [Comment!]!
     like(id: ID!): Like!
   }
 
@@ -35,7 +35,12 @@ const schema = gql`
     signUp(username: String!, email: String!, password: String!): Token!
     signIn(login: String!, password: String!): Token!
     likeLink(linkId: ID!, isPositive: Boolean!): Like!
-    createComment(text: String!, linkId: ID!): Comment!
+    createComment(
+      text: String!
+      linkId: ID
+      commentId: ID
+      isReply: Boolean!
+    ): Comment!
     replyComment(text: String!, commentId: ID!): Comment!
     editComment(id: ID!, text: String!): Comment!
     deleteComment(id: ID!): Boolean!
@@ -52,6 +57,7 @@ const schema = gql`
 
   type Subscription {
     commentCreated: Comment
+    commentReplied: Comment
     commentDeleted: Comment
     commentEdited: Comment
     likeCreated: Like
@@ -64,6 +70,7 @@ const schema = gql`
     createdAt: String!
     updatedAt: String!
     replies: [Comment!]!
+    isReply: Boolean!
   }
 
   type Reply {

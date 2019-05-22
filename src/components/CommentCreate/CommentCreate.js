@@ -5,8 +5,8 @@ import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
 const ADD_COMMENT = gql`
-  mutation($text: String!, $linkId: ID!) {
-    createComment(text: $text, linkId: $linkId) {
+  mutation($text: String!, $linkId: ID!, $isReply: Boolean!) {
+    createComment(text: $text, linkId: $linkId, isReply: $isReply) {
       id
       text
       createdAt
@@ -38,7 +38,9 @@ const CommentCreate = ({ linkId }) => {
               className="comemnt-create"
               onSubmit={e => {
                 e.preventDefault();
-                addComment({ variables: { text: comment, linkId } });
+                addComment({
+                  variables: { text: comment, linkId, isReply: false }
+                });
                 setComment("");
               }}
             >

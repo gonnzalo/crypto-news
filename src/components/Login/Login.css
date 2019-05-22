@@ -40,3 +40,22 @@
   background-color: rgb(46, 161, 228);
   width: 50%;
 }
+
+.submit-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  color: rgb(101, 233, 78);
+  padding: 0 0.6rem 0.6rem 0.6rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-close:hover {
+  opacity: 0.85;
+  color: rgb(99, 226, 109);
+}

@@ -8,31 +8,48 @@ import Footer from "./components/Footer/Footer";
 import LinkList from "./components/LinkList/LinkList";
 import LinkOpen from "./components/LinkOpen/LinkOpen";
 import SignUp from "./components/SignUp/SignUp";
+import Login from "./components/Login/Login";
 import "./App.css";
 import CurrentUser from "./components/CurrentUser/CurrentUser";
 
 const App = () => {
-  const [feed, setFeed] = useState(null);
+  const [linkOpen, setLinkOpen] = useState(null);
   const [isSignUpActive, setIsSignUpActive] = useState(false);
   const [isLoginActive, setIsLoginActive] = useState(false);
 
-  const handleClick = feed => {
-    setFeed(feed);
+  const handleClick = linkOpen => {
+    setLinkOpen(linkOpen);
   };
 
   const handleSignUp = () => {
     setIsSignUpActive(!isSignUpActive);
+    setIsLoginActive(false);
+  };
+
+  const handleLogin = () => {
+    setIsLoginActive(!isLoginActive);
+    setIsSignUpActive(false);
+  };
+
+  const closeLogin = () => {
+    setIsLoginActive(false);
+    setIsSignUpActive(false);
   };
 
   return (
     <>
       <Header />
-      <LeftNav handleSignUp={handleSignUp} />
+      <LeftNav handleSignUp={handleSignUp} handleLogin={handleLogin} />
       <div className="app-container">
         <LinkList handleClick={handleClick} />
-        <LinkOpen feed={feed} />
+        <LinkOpen feed={linkOpen} />
       </div>
-      {isSignUpActive && <SignUp handleSignUp={handleSignUp} />}
+      {isSignUpActive && (
+        <SignUp handleSignUp={handleSignUp} closeLogin={closeLogin} />
+      )}
+      {isLoginActive && (
+        <Login handleLogin={handleLogin} closeLogin={closeLogin} />
+      )}
       <Footer />
     </>
   );

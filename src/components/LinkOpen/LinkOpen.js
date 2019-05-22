@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   faThumbsUp,
   faThumbsDown,
@@ -31,7 +32,7 @@ const LinkOpen = ({ feed }) => {
           </div>
           <img src={feed.imgUrl} alt="news" className="open-image" />
           <p className="open-body">{feed.body}</p>
-          <CommentPage comments={feed.comments} linkId={feed.id} />
+          <CommentPage linkId={feed.id} />
           <div />
         </>
       )}

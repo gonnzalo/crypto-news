@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import timeDifferenceForDate from "../utils";
 
 import CommentReply from "../CommentReply/CommentReply";
 
 import "./Comments.css";
 
-const Comments = ({ comments }) => {
+const Comments = ({ data: { comments }, subscribeToNewComments }) => {
+  // useEffect(() => {
+  //   subscribeToNewComments();
+  // }, []);
   const nestedReplies = replies => {
     return replies.map(reply => (
       <div key={reply.id} className="reply-container">

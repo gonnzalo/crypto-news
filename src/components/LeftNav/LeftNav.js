@@ -12,7 +12,7 @@ const IS_LOGGED_IN = gql`
   }
 `;
 
-const LeftNav = ({ handleSignUp }) => {
+const LeftNav = ({ handleSignUp, handleLogin }) => {
   const [isBurgerActive, setBurger] = useState(false);
 
   const handleCLik = () => {
@@ -40,7 +40,11 @@ const LeftNav = ({ handleSignUp }) => {
                 ) : (
                   <>
                     <li>
-                      <button type="button" className="left-btns-log">
+                      <button
+                        type="button"
+                        className="left-btns-log"
+                        onClick={handleLogin}
+                      >
                         Log in
                       </button>
                     </li>

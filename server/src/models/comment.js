@@ -3,6 +3,10 @@ const comment = (sequelize, DataTypes) => {
     text: {
       type: DataTypes.STRING(2000),
       validate: { notEmpty: true }
+    },
+    isReply: {
+      type: DataTypes.BOOLEAN,
+      validate: { notEmpty: true }
     }
   });
 

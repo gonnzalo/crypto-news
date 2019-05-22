@@ -14,15 +14,15 @@ const CURRENT_USER = gql`
 const CurrentUser = () => {
   return (
     <Query query={CURRENT_USER}>
-      {({ client, loading, error, data: { me } }) => {
+      {({ client, loading, error, data }) => {
         if (loading) return "Loading...";
         if (error) return `Error! ${error.message}`;
 
-        if (me)
+        if (data.me)
           return (
             <span>
               <p>
-                {me.username}
+                {data.me.username}
                 &nbsp;
                 <button
                   onClick={() => {
@@ -40,6 +40,13 @@ const CurrentUser = () => {
               </p>
             </span>
           );
+        localStorage.removeItem("x-token");
+        client.writeData({
+          data: {
+            isLoggedIn: false
+          }
+        });
+        client.clearStore();
       }}
     </Query>
   );

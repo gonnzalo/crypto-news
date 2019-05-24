@@ -1,8 +1,5 @@
-header {
-  margin-left: 120px;
-  width: calc(100% - 120px);
+header .header {
   text-decoration: none;
-  z-index: 1000;
   transition: 0.2s ease-in;
   animation: slide-header 0.5s;
 }
@@ -18,17 +15,28 @@ header {
   }
 }
 
-.header {
-  background-color: rgb(255, 255, 255);
+.logo {
+  display: flex;
+  justify-content: space-between;
 }
 
-.logo h1 a {
-  text-decoration: none;
-  color: rgb(0, 0, 0);
+.logo h1 {
+  color: var(--color-logo);
+  padding-bottom: 0.5rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-logo);
+}
+.App-logo {
+  height: 80px;
+  width: 60px;
+  margin-right: 2rem;
+  fill: var(--color-logo);
+  transform: rotate(30deg);
 }
 
 .nav-container {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   height: 110px;
   display: flex;
@@ -43,127 +51,39 @@ header {
   list-style-type: none;
 }
 
-.nav-list li > a {
-  text-decoration: none;
-  color: black;
-}
-
 .nav-list li:not(:last-child) {
-  padding-right: 4rem;
+  padding-right: 2rem;
 }
 
-.btns-log {
-  outline: none;
-  cursor: pointer;
-  border: none;
+.btn-login {
+  padding: 0.6rem;
+  font-size: 1.3rem;
   background-color: transparent;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.2rem;
-  position: relative;
-  margin-bottom: 0;
-  padding-bottom: 4px;
-  color: inherit;
-  transition: 0.4s;
+  outline: none;
+  border: none;
+  color: var(--color-user-1);
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
 }
 
-.btns-log:after {
-  content: "";
-  position: absolute;
-  right: 0;
-  width: 0;
-  bottom: -4px;
-  height: 3px;
-  background-color: black;
-  transition-property: width;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-out;
+.btn-login:hover {
+  opacity: 0.9;
+  border-bottom: 2px solid var(--color-user-1);
 }
 
-.btns-log:hover:after {
-  left: 0;
-  right: auto;
-  width: 100%;
+.btn-signup {
+  padding: 0.6rem;
+  font-size: 1.3rem;
+  background-color: transparent;
+  border: 1px solid var(--color-user-1);
+  border-radius: 1px;
+  outline: none;
+  color: var(--color-user-1);
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-@media screen and (max-width: 750px) {
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-decoration: none;
-    z-index: 1000;
-    transition: 0.2s ease-in;
-    animation: slide-header 0.5s;
-    background-color: rgb(231, 231, 231);
-  }
-
-  .header-active {
-    background-color: rgb(231, 231, 231);
-  }
-
-  .logo h1 a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-  }
-
-  .nav-container {
-    width: 80%;
-    height: 100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.4s;
-  }
-
-  .navbar {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-
-  .navbar-active {
-    display: block;
-  }
-
-  .nav-list {
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(0, 0, 0, 0.938);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-
-  .nav-list li > button {
-    color: #fff;
-    font-size: 2rem;
-    text-transform: uppercase;
-  }
-
-  .nav-list li:not(:last-child) {
-    padding-right: 0rem;
-  }
-
-  .btns-log:after {
-    content: "";
-    position: absolute;
-    right: 0;
-    width: 0;
-    bottom: -4px;
-    height: 3px;
-    background-color: #fff;
-    transition-property: width;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-out;
-  }
-
-  .btns-log:hover:after {
-    left: 0;
-    right: auto;
-    width: 100%;
-  }
+.btn-signup:hover {
+  opacity: 0.9;
+  background-color: rgba(61, 252, 172, 0.13);
 }

@@ -114,7 +114,7 @@ sequelize.sync({ force: isTest }).then(async () => {
 
   setInterval(() => {
     fetchData();
-  }, 60 * 5000);
+  }, 60 * 2500);
 
   httpServer.listen({ port: 8000 }, () => {
     console.log("Apollo Server on http://localhost:8000/graphql");

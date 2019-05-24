@@ -16,19 +16,19 @@ const LinkOpen = ({ feed }) => {
       {feed && (
         <>
           <div className="open-title-container">
-            <h2 className="open-title">
-              <a href={feed.url}>
-                {feed.title}
-                <FontAwesomeIcon
-                  icon={faExternalLinkAlt}
-                  className="icon-link"
-                />
+            <a className="open-title-link" href={feed.url}>
+              <h2 className="open-title"> {feed.title} </h2>
+              <FontAwesomeIcon icon={faExternalLinkAlt} className="icon-link" />
+            </a>
+          </div>
+          <div className="open-source-container">
+            {" "}
+            <span className="open-source">
+              {timeDifferenceForDate(feed.createdAt)} by{" "}
+              <a className="source-link" href={`https://${feed.source}.com`}>
+                {feed.source}.com
               </a>
-              <span className="open-source">
-                {timeDifferenceForDate(feed.createdAt)} by{" "}
-                <a href={`https://${feed.source}.com`}>{feed.source}.com</a>
-              </span>
-            </h2>
+            </span>
           </div>
           <img src={feed.imgUrl} alt="news" className="open-image" />
           <p className="open-body">{feed.body}</p>

@@ -27,8 +27,9 @@ const ADD_REPLY = gql`
   }
 `;
 
-const CommentReply = ({ commentId }) => {
+const CommentReply = ({ commentId, handleReply }) => {
   const [comment, setComment] = useState("");
+
   return (
     <Mutation mutation={ADD_REPLY}>
       {(addReply, { loading, error, data }) => {
@@ -43,6 +44,7 @@ const CommentReply = ({ commentId }) => {
                 addReply({
                   variables: { text: comment, commentId, isReply: true }
                 });
+                handleReply();
                 setComment("");
               }}
             >
@@ -51,8 +53,19 @@ const CommentReply = ({ commentId }) => {
                 className="comment-textarea"
                 onChange={e => setComment(e.target.value)}
                 value={comment}
+                placeholder="Insert a new reply"
               />
-              <input type="submit" value="comment" className="btn-comment" />
+              <div className="submit-footer">
+                <span className="btn-comment-filler" />
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={handleReply}
+                >
+                  Cancel
+                </button>
+                <input type="submit" value="reply" className="btn-comment" />
+              </div>
             </form>
           </div>
         );

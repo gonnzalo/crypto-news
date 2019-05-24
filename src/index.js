@@ -55,11 +55,23 @@ const client = new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors)
-        graphQLErrors.map(({ message, locations, path }) =>
+        graphQLErrors.map(({ message, locations, path }) => {
+          if (
+            message ===
+            "Context creation failed: Your session expired. Sign in again."
+          ) {
+            localStorage.removeItem("x-token");
+            client.writeData({
+              data: {
+                isLoggedIn: false
+              }
+            });
+            client.clearStore();
+          }
           console.log(
             `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-          )
-        );
+          );
+        });
       if (networkError) console.log(`[Network error]: ${networkError}`);
     }),
     link

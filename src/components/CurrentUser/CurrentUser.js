@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import {
+  faSignInAlt,
+  faUser,
+  faUserNinja
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "./CurrentUser.css";
 
 const CURRENT_USER = gql`
   query currentUser {
@@ -20,33 +28,29 @@ const CurrentUser = () => {
 
         if (data.me)
           return (
-            <span>
-              <p>
+            <div>
+              <span className="current-user">
+                <FontAwesomeIcon className="icon-user" icon={faUser} />
                 {data.me.username}
-                &nbsp;
-                <button
-                  onClick={() => {
-                    localStorage.removeItem("x-token");
-                    client.writeData({
-                      data: {
-                        isLoggedIn: false
-                      }
-                    });
-                    client.clearStore();
-                  }}
-                >
-                  Log out
-                </button>
-              </p>
-            </span>
+              </span>
+              <button
+                type="button"
+                className="btn-logout"
+                onClick={() => {
+                  localStorage.removeItem("x-token");
+                  client.writeData({
+                    data: {
+                      isLoggedIn: false
+                    }
+                  });
+                  client.clearStore();
+                }}
+              >
+                <FontAwesomeIcon className="icon-logout" icon={faSignInAlt} />
+                Log out
+              </button>
+            </div>
           );
-        localStorage.removeItem("x-token");
-        client.writeData({
-          data: {
-            isLoggedIn: false
-          }
-        });
-        client.clearStore();
       }}
     </Query>
   );

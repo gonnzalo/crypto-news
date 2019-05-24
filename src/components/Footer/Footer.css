@@ -4,8 +4,9 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
 footer {
-  background-color: #312f35;
-  color: #72aa92;
+  background-color: var(--color-primary-2z);
+  color: #ffffff;
   font-size: 1.4rem;
 }

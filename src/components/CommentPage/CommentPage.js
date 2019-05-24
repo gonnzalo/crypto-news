@@ -63,7 +63,7 @@ const CommentPage = ({ linkId }) => {
     <>
       <CommentCreate linkId={linkId} />
       <Query query={GET_COMMENTS} variables={{ linkId }}>
-        {({ loading, error, subscribeToMore, ...result }) => {
+        {({ loading, error, subscribeToMore, data: { comments } }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
 
@@ -73,8 +73,6 @@ const CommentPage = ({ linkId }) => {
               updateQuery: (prev, { subscriptionData }) => {
                 if (!subscriptionData.data) return prev;
                 const newFeedItem = subscriptionData.data.commentCreated;
-                const { isReply } = newFeedItem.replies;
-                console.log(newFeedItem.replies);
                 if (newFeedItem.replies.length === 0) {
                   return Object.assign({}, prev, {
                     comments: [newFeedItem, ...prev.comments]
@@ -87,7 +85,9 @@ const CommentPage = ({ linkId }) => {
             });
           }
 
-          return <Comments {...result} />;
+          return comments.map(comment => (
+            <Comments comment={comment} key={comment.id} />
+          ));
         }}
       </Query>
     </>

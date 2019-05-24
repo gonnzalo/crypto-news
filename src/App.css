@@ -1,4 +1,10 @@
+.main-app {
+  background-color: var(--color-primary-1);
+}
+
 .app-container {
   height: calc(100vh - 210px);
+  width: 90%;
+  margin: 0 auto;
   display: flex;
 }

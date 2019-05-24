@@ -22,7 +22,7 @@ const GET_LINKS = gql`
 `;
 
 const LinkList = ({ handleClick }) => (
-  <Query query={GET_LINKS} pollInterval={5000}>
+  <Query query={GET_LINKS} pollInterval={60 * 2500}>
     {({ loading, error, data, startPolling, stopPolling }) => {
       if (loading) return "Loading...";
       if (error) return `Error! ${error.message}`;

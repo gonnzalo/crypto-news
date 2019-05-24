@@ -5,15 +5,32 @@
 
 .icon-thumb {
   margin: 0 0.5rem;
-  color: rgb(211, 211, 211);
+  color: var(--color-text-3);
+  transition: 0.4s;
+}
+
+.thumb-green:hover {
+  color: var(--color-icon-up);
+}
+
+.thumb-red:hover {
+  color: var(--color-icon-down);
 }
 
 .icon-green {
-  color: rgb(65, 187, 65);
+  color: var(--color-icon-up);
 }
 
 .icon-red {
-  color: rgb(235, 75, 75);
+  color: var(--color-icon-down);
+}
+
+.icon-red:hover {
+  opacity: 0.8;
+}
+
+.icon-green:hover {
+  opacity: 0.8;
 }
 
 .btn-like {

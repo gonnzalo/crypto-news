@@ -1,3 +1,44 @@
 .reply-container {
   margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid rgb(87, 87, 87);
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.comment-user {
+  color: var(--color-user);
+}
+
+.comment-text {
+  margin: 0.5rem 0.2rem 0.5rem 0.2rem;
+}
+
+.comment-footer {
+}
+
+.button-reply {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--color-text-3);
+  cursor: pointer;
+}
+
+.button-reply:hover {
+  color: var(--color-hover-blue);
+}
+
+.time-ago {
+  margin-right: 2rem;
+  color: var(--color-text-3);
+  font-size: 0.8rem;
 }

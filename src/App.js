@@ -37,9 +37,8 @@ const App = () => {
   };
 
   return (
-    <>
-      <Header />
-      <LeftNav handleSignUp={handleSignUp} handleLogin={handleLogin} />
+    <div className="main-app">
+      <Header handleSignUp={handleSignUp} handleLogin={handleLogin} />
       <div className="app-container">
         <LinkList handleClick={handleClick} />
         <LinkOpen feed={linkOpen} />
@@ -51,7 +50,7 @@ const App = () => {
         <Login handleLogin={handleLogin} closeLogin={closeLogin} />
       )}
       <Footer />
-    </>
+    </div>
   );
 };
 

@@ -1,0 +1,18 @@
+.btn-cancel {
+  padding: 0.5rem;
+  border: none;
+  color: var(--color-btn-red);
+  border-top-left-radius: 1px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  background-color: transparent;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cancel:hover {
+  border: 1px solid rgba(243, 51, 51, 0.61);
+  background-color: rgba(243, 51, 51, 0.055);
+}

@@ -27,6 +27,7 @@ const Likes = ({ upLikes, downLikes, linkId }) => {
           <div className="feed-likes">
             <span>{upLikes}</span>
             <button
+              type="button"
               className="btn-like btn-like-up"
               onClick={() => {
                 addLike({ variables: { linkId, isPositive: true } });
@@ -34,12 +35,14 @@ const Likes = ({ upLikes, downLikes, linkId }) => {
             >
               <FontAwesomeIcon
                 icon={faThumbsUp}
-                className={`icon-thumb ${upLikes > 0 && "icon-green"}`}
+                className={`icon-thumb thumb-green ${upLikes > 0 &&
+                  "icon-green"}`}
               />
             </button>
 
             <span>{downLikes}</span>
             <button
+              type="button"
               className="btn-like btn-like-down"
               onClick={() => {
                 addLike({ variables: { linkId, isPositive: false } });
@@ -47,7 +50,8 @@ const Likes = ({ upLikes, downLikes, linkId }) => {
             >
               <FontAwesomeIcon
                 icon={faThumbsDown}
-                className={`icon-thumb ${downLikes > 0 && "icon-red"}`}
+                className={`icon-thumb thumb-red ${downLikes > 0 &&
+                  "icon-red"}`}
               />
             </button>
           </div>

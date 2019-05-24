@@ -2,12 +2,29 @@
   overflow-y: auto;
   height: 100%;
   width: 40%;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--color-primary-1);
+  color: var(--color-text-0);
   padding: 1rem;
 }
 
+.open-title-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .open-title {
+  display: inline;
   overflow-wrap: break-word;
+  text-decoration: none;
+  color: var(--color-text-0);
+}
+
+.open-title-container:hover {
+  opacity: 0.7;
+}
+
+.open-source-container {
+  margin-top: 0.5rem;
 }
 
 .open-source {
@@ -15,20 +32,31 @@
   font-weight: 400;
 }
 
+.source-link {
+  text-decoration: none;
+  color: var(--color-text-0);
+}
+
 .open-body {
+  overflow-wrap: break-word;
   margin: 1rem 0rem;
+  font-size: 1.2rem;
 }
 
 .icon-link {
   font-size: 1rem;
 }
+.source-link {
+  transition: 0.3s;
+  color: var(--color-hover-blue);
+}
+
+.source-link:hover {
+  background-color: var(--color-hover-blue);
+  padding: 0.3rem;
+  color: black;
+}
 
 .open-image {
   margin-top: 1rem;
-}
-
-.btn-comment {
-  min-width: 100%;
-  padding: 0.5rem;
-  text-transform: uppercase;
 }

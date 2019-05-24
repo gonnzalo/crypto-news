@@ -1,10 +1,18 @@
 .feed-container {
-  margin: 0.4rem 0.4rem;
-  padding: 0.8rem;
+  margin: 0.2rem 0.4rem;
+  padding: 1.4rem;
+  line-height: 1.6;
   border-radius: 4px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--color-primary-3);
+  color: var(--color-text-0);
   display: flex;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.feed-container:hover {
+  background-color: #24262e;
+  transform: translateY(-2px);
 }
 
 .feed-time {
@@ -19,9 +27,19 @@
 .feed-url {
   display: inline-block;
   font-size: 0.8rem;
+  color: var(--color-text-1);
+  text-decoration: none;
 }
 
 .icon-link {
   margin: 0 0.4rem;
-  color: rgb(211, 211, 211);
+  color: var(--color-text-1);
+}
+
+.feed-url:hover {
+  color: var(--color-hover-blue);
+}
+
+.icon-link:hover {
+  color: var(--color-hover-blue);
 }

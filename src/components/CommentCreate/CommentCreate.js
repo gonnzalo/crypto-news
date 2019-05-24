@@ -49,8 +49,12 @@ const CommentCreate = ({ linkId }) => {
                 className="comment-textarea"
                 onChange={e => setComment(e.target.value)}
                 value={comment}
+                placeholder="Insert a new comment"
               />
-              <input type="submit" value="comment" className="btn-comment" />
+              <div className="submit-footer">
+                <span className="btn-comment-filler" />
+                <input type="submit" value="comment" className="btn-comment" />
+              </div>
             </form>
           </div>
         );

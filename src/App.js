@@ -17,8 +17,8 @@ const App = () => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
   const [isLoginActive, setIsLoginActive] = useState(false);
 
-  const handleClick = linkOpen => {
-    setLinkOpen(linkOpen);
+  const handleClick = link => {
+    setLinkOpen(link);
   };
 
   const handleSignUp = () => {
@@ -44,10 +44,18 @@ const App = () => {
         <LinkOpen feed={linkOpen} />
       </div>
       {isSignUpActive && (
-        <SignUp handleSignUp={handleSignUp} closeLogin={closeLogin} />
+        <SignUp
+          handleSignUp={handleSignUp}
+          closeLogin={closeLogin}
+          handleLogin={handleLogin}
+        />
       )}
       {isLoginActive && (
-        <Login handleLogin={handleLogin} closeLogin={closeLogin} />
+        <Login
+          handleLogin={handleLogin}
+          closeLogin={closeLogin}
+          handleSignUp={handleSignUp}
+        />
       )}
       <Footer />
     </div>

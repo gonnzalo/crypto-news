@@ -25,11 +25,12 @@ body {
   --color-primary-2: #0d0d0f;
   --color-primary-3: #1b1b22;
 
-  --color-secundary-0: #3a5d59;
+  --color-secundary-0: #081420;
   --color-secundary-1: #308d83;
 
   --color-text-0: #fff;
   --color-text-1: rgb(202, 202, 202);
+  --color-text-2: rgb(197, 197, 197);
   --color-text-3: rgb(180, 180, 180);
 
   --color-icon-up: rgb(83, 212, 78);

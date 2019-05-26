@@ -6,37 +6,24 @@
   margin-left: auto;
   margin-right: auto;
   width: 520px;
-  background-color: rgb(55, 67, 68);
+  background-color: var(--color-secundary-0);
   min-height: 30vh;
-  border: 1px solid rgb(58, 51, 65);
-  padding: 2rem;
+  font-size: 1.1rem;
+  border: 1px solid rgba(50, 235, 158, 0.52);
+  padding: 2.5rem;
   color: white;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
+.already-user {
 }
 
-.label-form {
-  margin: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.input-form {
-  width: 60%;
-  padding: 0.6rem;
-}
-
-.submit-form {
-  margin: 1rem auto;
-  padding: 0.5rem;
-  border-radius: 4px;
+.btn-form-link {
+  background-color: transparent;
   border: none;
-  color: #fff;
-  font-size: 1.2rem;
-  background-color: rgb(46, 161, 228);
-  width: 50%;
+  color: var(--color-btn-blue);
+  cursor: pointer;
+}
+
+.btn-form-link:hover {
+  opacity: 0.8;
 }

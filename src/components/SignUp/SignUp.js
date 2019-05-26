@@ -12,7 +12,7 @@ const SIGN_UP = gql`
   }
 `;
 
-const SignUp = ({ handleSignUp, closeLogin }) => {
+const SignUp = ({ handleSignUp, closeLogin, handleLogin }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -56,7 +56,7 @@ const SignUp = ({ handleSignUp, closeLogin }) => {
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                     type="text"
-                    placeholder="Full Name"
+                    placeholder="Username"
                     className="input-form"
                   />
                 </label>
@@ -87,8 +87,23 @@ const SignUp = ({ handleSignUp, closeLogin }) => {
                     className="input-form"
                   />
                 </label>
-                <input type="submit" value="SignUp" className="submit-form" />
+                <input
+                  type="submit"
+                  value="New Account"
+                  className="submit-form"
+                />
               </form>
+              <span className="already-user">
+                Already have an account?{" "}
+                <button
+                  type="button"
+                  className="btn-form-link"
+                  onClick={handleLogin}
+                >
+                  {" "}
+                  Log in
+                </button>
+              </span>
               {loading && <p>Loading...</p>}
               {error && <p>Error, Please try again</p>}
             </div>

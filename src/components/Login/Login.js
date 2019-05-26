@@ -12,7 +12,7 @@ const SIGN_IN = gql`
   }
 `;
 
-const Login = ({ handleLogin, closeLogin }) => {
+const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
@@ -48,14 +48,14 @@ const Login = ({ handleLogin, closeLogin }) => {
                 className="form-container"
               >
                 <label htmlFor="login" className="label-form">
-                  login
+                  User
                   <input
                     name="login"
                     id="login"
                     value={login}
                     onChange={e => setLogin(e.target.value)}
                     type="text"
-                    placeholder="Full Name"
+                    placeholder="Username or Email"
                     className="input-form"
                   />
                 </label>
@@ -73,8 +73,19 @@ const Login = ({ handleLogin, closeLogin }) => {
                     className="input-form"
                   />
                 </label>
-                <input type="submit" value="Login" className="submit-form" />
+                <input type="submit" value="Sign in" className="submit-form" />
               </form>
+              <span className="already-user">
+                Don't have an account?{" "}
+                <button
+                  type="button"
+                  className="btn-form-link"
+                  onClick={handleSignUp}
+                >
+                  {" "}
+                  New Account
+                </button>
+              </span>
               {loading && <p>Loading...</p>}
               {error && <p>Error, Please try again</p>}
             </div>

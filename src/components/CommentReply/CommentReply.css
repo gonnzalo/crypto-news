@@ -1,6 +1,6 @@
 .btn-cancel {
   padding: 0.5rem;
-  border: none;
+  border: 1px solid transparent;
   color: var(--color-btn-red);
   border-top-left-radius: 1px;
   letter-spacing: 2px;

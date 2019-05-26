@@ -15,10 +15,15 @@
   transform: translateY(-2px);
 }
 
+.feed-container:focus {
+  background-color: #03060f;
+}
+
 .feed-time {
   flex: 0 0 3.5%;
   text-align: right;
   margin-right: 1rem;
+  color: var(--color-text-1);
 }
 
 .feed-title {

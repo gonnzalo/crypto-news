@@ -1,6 +1,7 @@
 .feed-likes {
   text-align: right;
   flex: 1 0 10%;
+  color: var(--color-text-1);
 }
 
 .icon-thumb {

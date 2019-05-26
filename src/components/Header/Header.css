@@ -60,10 +60,10 @@ header .header {
   font-size: 1.3rem;
   background-color: transparent;
   outline: none;
-  border: none;
+  border: 2px solid transparent;
   color: var(--color-user-1);
   cursor: pointer;
-  transition: 0.1s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 .btn-login:hover {

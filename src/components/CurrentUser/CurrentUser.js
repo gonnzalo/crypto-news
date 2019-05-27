@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import {
-  faSignInAlt,
-  faUser,
-  faUserNinja
-} from "@fortawesome/free-solid-svg-icons";
+import { faSignInAlt, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./CurrentUser.css";

@@ -9,6 +9,7 @@ import LinkList from "./components/LinkList/LinkList";
 import LinkOpen from "./components/LinkOpen/LinkOpen";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
+import { UserContext } from "./user-context";
 import "./App.css";
 import CurrentUser from "./components/CurrentUser/CurrentUser";
 

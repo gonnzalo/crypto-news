@@ -23,6 +23,7 @@ const Likes = ({ upLikes, downLikes, linkId }) => {
   return (
     <Mutation mutation={ADD_LIKE}>
       {(addLike, { loading, error, data }) => {
+        if (error) return `Error! ${error.message}`;
         return (
           <div className="feed-likes">
             <span>{upLikes}</span>

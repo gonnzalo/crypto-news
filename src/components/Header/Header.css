@@ -1,4 +1,5 @@
-header .header {
+.header {
+  border-bottom: 1px solid rgb(53, 53, 53);
   text-decoration: none;
   transition: 0.2s ease-in;
   animation: slide-header 0.5s;
@@ -18,16 +19,19 @@ header .header {
 .logo {
   display: flex;
   justify-content: space-between;
+  align-content: center;
 }
 
 .logo h1 {
   color: var(--color-logo);
+  font-size: 1.8rem;
   padding-bottom: 0.5rem;
   letter-spacing: 3px;
   text-transform: uppercase;
   border-bottom: 1px solid var(--color-logo);
 }
 .App-logo {
+  align-items: center;
   height: 80px;
   width: 60px;
   margin-right: 2rem;
@@ -38,7 +42,7 @@ header .header {
 .nav-container {
   width: 90%;
   margin: 0 auto;
-  height: 110px;
+  height: 90px;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,11 +1,9 @@
 .btn-logout {
-  margin: 1rem auto;
   padding: 0.5rem 0.2rem;
   border: none;
-  /* border: 1px solid var(--color-user-1); */
   color: var(--color-user-1);
   border-bottom: 1px solid var(--color-user-1);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   background-color: transparent;
   cursor: pointer;
   transition: 0.3;
@@ -20,9 +18,9 @@
 }
 
 .current-user {
-  margin-right: 1.5rem;
+  margin-right: 2rem;
   padding: 0.5rem 0.2rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   border-bottom: 1px solid var(--color-user);
   color: var(--color-user);
 }

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./CommentCreate.css";
 
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import UserContext from "../../UserContext";
 
 const ADD_COMMENT = gql`
   mutation($text: String!, $linkId: ID!, $isReply: Boolean!) {
@@ -27,12 +28,13 @@ const ADD_COMMENT = gql`
   }
 `;
 
-const CommentCreate = ({ linkId }) => {
+const CommentCreate = ({ linkId, handleLogin, handleSignUp }) => {
   const [comment, setComment] = useState("");
+  const isLoggedIn = useContext(UserContext);
   return (
     <Mutation mutation={ADD_COMMENT}>
       {(addComment, { loading, error, data }) => {
-        return (
+        return isLoggedIn ? (
           <div className="comments-container">
             <form
               className="comemnt-create"
@@ -56,6 +58,28 @@ const CommentCreate = ({ linkId }) => {
                 <input type="submit" value="comment" className="btn-comment" />
               </div>
             </form>
+          </div>
+        ) : (
+          <div className="noUser">
+            <span>
+              Please{" "}
+              <button
+                type="button"
+                onClick={handleLogin}
+                className="btn-form-link"
+              >
+                login
+              </button>{" "}
+              or{" "}
+              <button
+                type="button"
+                onClick={handleSignUp}
+                className="btn-form-link"
+              >
+                sign-up
+              </button>{" "}
+              to comment.
+            </span>
           </div>
         );
       }}

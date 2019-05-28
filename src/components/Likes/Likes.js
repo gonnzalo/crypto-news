@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Likes.css";
 
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import UserContext from "../../UserContext";
 
 const ADD_LIKE = gql`
   mutation($linkId: ID!, $isPositive: Boolean!) {
@@ -19,11 +20,11 @@ const ADD_LIKE = gql`
   }
 `;
 
-const Likes = ({ upLikes, downLikes, linkId }) => {
+const Likes = ({ upLikes, downLikes, linkId, handleSignUp }) => {
+  const isLoggedIn = useContext(UserContext);
   return (
     <Mutation mutation={ADD_LIKE}>
-      {(addLike, { loading, error, data }) => {
-        if (error) return `Error! ${error.message}`;
+      {addLike => {
         return (
           <div className="feed-likes">
             <span>{upLikes}</span>
@@ -31,7 +32,10 @@ const Likes = ({ upLikes, downLikes, linkId }) => {
               type="button"
               className="btn-like btn-like-up"
               onClick={() => {
-                addLike({ variables: { linkId, isPositive: true } });
+                if (isLoggedIn === false) {
+                  return handleSignUp();
+                }
+                return addLike({ variables: { linkId, isPositive: true } });
               }}
             >
               <FontAwesomeIcon
@@ -46,7 +50,10 @@ const Likes = ({ upLikes, downLikes, linkId }) => {
               type="button"
               className="btn-like btn-like-down"
               onClick={() => {
-                addLike({ variables: { linkId, isPositive: false } });
+                if (isLoggedIn === false) {
+                  return handleSignUp();
+                }
+                return addLike({ variables: { linkId, isPositive: false } });
               }}
             >
               <FontAwesomeIcon

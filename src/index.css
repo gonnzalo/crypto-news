@@ -22,19 +22,19 @@ body {
 :root {
   --color-primary-0: #1c1d1f;
   --color-primary-1: #0b0c0f;
-  --color-primary-2: #0d0d0f;
+  --color-primary-2: #0f0f14;
   --color-primary-3: #1b1b22;
 
-  --color-secundary-0: #081420;
+  --color-secundary-0: #0e141a;
   --color-secundary-1: #308d83;
 
-  --color-text-0: #fff;
-  --color-text-1: rgb(202, 202, 202);
-  --color-text-2: rgb(197, 197, 197);
+  --color-text-0: #eee;
+  --color-text-1: rgb(197, 197, 197);
+  --color-text-2: rgb(216, 216, 216);
   --color-text-3: rgb(180, 180, 180);
 
-  --color-icon-up: rgb(83, 212, 78);
-  --color-icon-down: rgb(253, 55, 55);
+  --color-icon-up: rgb(66, 216, 116);
+  --color-icon-down: rgb(245, 65, 65);
 
   --color-btn-blue: #22c1dd;
   --color-btn-red: rgb(243, 51, 51);
@@ -43,5 +43,5 @@ body {
   --color-user: rgb(253, 122, 46);
   --color-user-1: rgb(50, 235, 158);
 
-  --color-logo: rgb(255, 238, 164);
+  --color-logo: rgb(132, 238, 146);
 }

@@ -29,7 +29,7 @@ const Footer = () => {
 
     fetchData();
 
-    const interval = setInterval(() => fetchData(), 60 * 1000);
+    const interval = setInterval(() => fetchData(), 60 * 5000);
 
     return function cleanup() {
       clearInterval(interval);
@@ -59,12 +59,15 @@ const Footer = () => {
                 )}
                 {item.price_change_percentage_24h > 0 ? (
                   <div className="footer-change green-price">
-                    <FontAwesomeIcon icon={faSortUp} className="test" />
+                    <FontAwesomeIcon icon={faSortUp} className="icon-footer" />
                     <span> {item.price_change_percentage_24h.toFixed(2)}%</span>
                   </div>
                 ) : (
-                  <div className="footer-change green-price">
-                    <FontAwesomeIcon icon={faSortDown} />
+                  <div className="footer-change red-price">
+                    <FontAwesomeIcon
+                      icon={faSortDown}
+                      className="icon-footer"
+                    />
                     <span> {item.price_change_percentage_24h.toFixed(2)}%</span>
                   </div>
                 )}

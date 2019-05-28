@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import gql from "graphql-tag";
-import { Query } from "react-apollo";
+import React, { useState } from "react";
 
 import Header from "./components/Header/Header";
-import LeftNav from "./components/LeftNav/LeftNav";
+
 import Footer from "./components/Footer/Footer";
 import LinkList from "./components/LinkList/LinkList";
 import LinkOpen from "./components/LinkOpen/LinkOpen";
 import SignUp from "./components/SignUp/SignUp";
 import Login from "./components/Login/Login";
-import { UserContext } from "./user-context";
 import "./App.css";
-import CurrentUser from "./components/CurrentUser/CurrentUser";
+
+import UserContext from "./UserContext";
+
+const isLoggedIn = !!localStorage.getItem("x-token");
 
 const App = () => {
   const [linkOpen, setLinkOpen] = useState(null);
@@ -38,28 +38,38 @@ const App = () => {
   };
 
   return (
-    <div className="main-app">
-      <Header handleSignUp={handleSignUp} handleLogin={handleLogin} />
-      <div className="app-container">
-        <LinkList handleClick={handleClick} />
-        <LinkOpen feed={linkOpen} />
+    <UserContext.Provider value={isLoggedIn}>
+      <div className="main-app">
+        <Header
+          handleSignUp={handleSignUp}
+          handleLogin={handleLogin}
+          closeLogin={closeLogin}
+        />
+        <div className="app-container">
+          <LinkList handleClick={handleClick} handleSignUp={handleSignUp} />
+          <LinkOpen
+            feed={linkOpen}
+            handleSignUp={handleSignUp}
+            handleLogin={handleLogin}
+          />
+        </div>
+        {isSignUpActive && (
+          <SignUp
+            handleSignUp={handleSignUp}
+            closeLogin={closeLogin}
+            handleLogin={handleLogin}
+          />
+        )}
+        {isLoginActive && (
+          <Login
+            handleLogin={handleLogin}
+            closeLogin={closeLogin}
+            handleSignUp={handleSignUp}
+          />
+        )}
+        <Footer />
       </div>
-      {isSignUpActive && (
-        <SignUp
-          handleSignUp={handleSignUp}
-          closeLogin={closeLogin}
-          handleLogin={handleLogin}
-        />
-      )}
-      {isLoginActive && (
-        <Login
-          handleLogin={handleLogin}
-          closeLogin={closeLogin}
-          handleSignUp={handleSignUp}
-        />
-      )}
-      <Footer />
-    </div>
+    </UserContext.Provider>
   );
 };
 

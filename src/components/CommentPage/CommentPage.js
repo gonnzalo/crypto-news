@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
@@ -58,10 +58,14 @@ const COMMENTS_SUBSCRIPTION = gql`
 
 let isSub = null;
 
-const CommentPage = ({ linkId }) => {
+const CommentPage = ({ linkId, handleSignUp, handleLogin }) => {
   return (
     <>
-      <CommentCreate linkId={linkId} />
+      <CommentCreate
+        linkId={linkId}
+        handleSignUp={handleSignUp}
+        handleLogin={handleLogin}
+      />
       <Query query={GET_COMMENTS} variables={{ linkId }}>
         {({ loading, error, subscribeToMore, data: { comments } }) => {
           if (loading) return "Loading...";
@@ -86,7 +90,12 @@ const CommentPage = ({ linkId }) => {
           }
 
           return comments.map(comment => (
-            <Comments comment={comment} key={comment.id} />
+            <Comments
+              comment={comment}
+              key={comment.id}
+              handleSignUp={handleSignUp}
+              handleLogin={handleLogin}
+            />
           ));
         }}
       </Query>

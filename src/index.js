@@ -5,7 +5,7 @@ import "./index.css";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";
 import { InMemoryCache } from "apollo-cache-inmemory";
-import { createHttpLink, HttpLink } from "apollo-link-http";
+import { HttpLink } from "apollo-link-http";
 import { onError } from "apollo-link-error";
 import { ApolloLink, split } from "apollo-link";
 import { setContext } from "apollo-link-context";
@@ -60,15 +60,9 @@ const client = new ApolloClient({
             message ===
             "Context creation failed: Your session expired. Sign in again."
           ) {
-            localStorage.removeItem("x-token");
-            client.writeData({
-              data: {
-                isLoggedIn: false
-              }
-            });
-            client.clearStore();
+            return localStorage.removeItem("x-token");
           }
-          console.log(
+          return console.log(
             `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
           );
         });
@@ -77,12 +71,6 @@ const client = new ApolloClient({
     link
   ]),
   cache
-});
-
-cache.writeData({
-  data: {
-    isLoggedIn: !!localStorage.getItem("x-token")
-  }
 });
 
 ReactDOM.render(

@@ -50,3 +50,9 @@ textarea {
   flex: 0 0 55%;
   background-color: rgb(16, 17, 20);
 }
+
+.noUser {
+  font-size: 1rem;
+  margin: 2.5rem 0;
+  text-align: center;
+}

@@ -1,13 +1,17 @@
 import React from "react";
 
-import { Html5Entities } from "html-entities";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faThumbsUp,
+  faThumbsDown,
+  faExternalLinkAlt
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CommentPage from "../CommentPage/CommentPage";
 import timeDifferenceForDate from "../utils";
 import "./LinkOpen.css";
 
-const htmlEntities = new Html5Entities();
+const renderHTML = rawHTML =>
+  React.createElement("span", { dangerouslySetInnerHTML: { __html: rawHTML } });
 
 const LinkOpen = ({ feed, handleSignUp, handleLogin }) => {
   return (
@@ -32,7 +36,7 @@ const LinkOpen = ({ feed, handleSignUp, handleLogin }) => {
           {/* <div className="open-image">
             <img src={feed.imgUrl} alt="news" />
           </div> */}
-          <p className="open-body">{htmlEntities.decode(feed.body)}</p>
+          <div className="open-body">{renderHTML(feed.body)}</div>
           <CommentPage
             linkId={feed.id}
             handleSignUp={handleSignUp}

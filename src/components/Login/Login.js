@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
@@ -19,16 +19,12 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
   return (
     <>
       <Mutation mutation={SIGN_IN}>
-        {(signIn, { loading, error, data, client }) => {
+        {(signIn, { loading, error, data }) => {
           if (data) {
             const { token } = data.signIn;
             localStorage.setItem("x-token", token);
-            client.writeData({
-              data: {
-                isLoggedIn: true
-              }
-            });
             handleLogin();
+            window.location.reload();
           }
           return (
             <div className="login-container">
@@ -76,7 +72,7 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                 <input type="submit" value="Sign in" className="submit-form" />
               </form>
               <span className="already-user">
-                Don't have an account?{" "}
+                Don&apos;t have an account?
                 <button
                   type="button"
                   className="btn-form-link"

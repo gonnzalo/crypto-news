@@ -31,7 +31,7 @@ footer {
 
 .footer-symbol {
   color: rgb(201, 203, 207);
-  margin-right: 0.1rem;
+  /* margin-right: 0.3rem; */
 }
 
 .green-price {
@@ -51,6 +51,6 @@ footer {
   flex-basis: 100%;
 }
 
-.test {
-  margin-right: 2px;
+.icon-footer {
+  margin: 0 0.2rem 0 0.3rem;
 }

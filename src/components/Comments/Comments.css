@@ -16,7 +16,8 @@
 }
 
 .comment-text {
-  margin: 0.5rem 0.2rem 0.5rem 0.2rem;
+  margin: 0.5rem 3rem 0.5rem 1rem;
+  font-size: 0.9rem;
 }
 
 .comment-footer {
@@ -26,7 +27,6 @@
   background-color: transparent;
   border: none;
   outline: none;
-  margin-left: 1rem;
   margin-bottom: 1rem;
   font-size: 0.9rem;
   color: var(--color-text-3);
@@ -38,7 +38,8 @@
 }
 
 .time-ago {
-  margin-right: 2rem;
+  margin-right: 1rem;
   color: var(--color-text-3);
+  padding-top: 0.1rem;
   font-size: 0.8rem;
 }

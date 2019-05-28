@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
@@ -43,7 +43,9 @@ const SignUp = ({ handleSignUp, closeLogin, handleLogin }) => {
               </button>
               <form
                 onSubmit={e => {
-                  signUp({ variables: { username, email, password } });
+                  signUp({ variables: { username, email, password } }).then(
+                    () => window.location.reload()
+                  );
                   e.preventDefault();
                 }}
                 className="form-container"

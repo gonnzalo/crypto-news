@@ -21,7 +21,7 @@ const GET_LINKS = gql`
   }
 `;
 
-const LinkList = ({ handleClick }) => (
+const LinkList = ({ handleClick, handleSignUp }) => (
   <Query query={GET_LINKS} pollInterval={60 * 2500}>
     {({ loading, error, data, startPolling, stopPolling }) => {
       if (loading) return "Loading...";
@@ -31,7 +31,12 @@ const LinkList = ({ handleClick }) => (
       return (
         <section className="link-list-container">
           {links.map(link => (
-            <LinkItem key={link.id} feed={link} handleClick={handleClick} />
+            <LinkItem
+              key={link.id}
+              feed={link}
+              handleClick={handleClick}
+              handleSignUp={handleSignUp}
+            />
           ))}
         </section>
       );

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import timeDifferenceForDate from "../utils";
 
 import CommentReply from "../CommentReply/CommentReply";
 
 import "./Comments.css";
 
-const Comments = ({ comment }) => {
+const Comments = ({ comment, handleSignUp, handleLogin }) => {
   const [replyActive, setReplyActive] = useState(false);
 
   const { replies } = comment;
@@ -15,13 +15,15 @@ const Comments = ({ comment }) => {
     return setReplyActive(false);
   };
 
-  const nestedReplies = replies => {
-    const last = replies.length - 1;
-    return replies.map((reply, index) => (
+  const nestedReplies = values => {
+    const last = values.length - 1;
+    return values.map((reply, index) => (
       <div key={reply.id}>
-        <div className="comment-user">
-          <span>{reply.user.username}</span>{" "}
-          <span>{timeDifferenceForDate(reply.createdAt)}</span>
+        <div className="comment-header">
+          <span className="comment-user">{reply.user.username}</span>{" "}
+          <span className="time-ago">
+            {timeDifferenceForDate(reply.createdAt)} ago
+          </span>
         </div>
         <div className="comment-text">
           <p>{reply.text}</p>
@@ -36,7 +38,12 @@ const Comments = ({ comment }) => {
           </button>
         )}
         {last === index && replyActive && (
-          <CommentReply commentId={comment.id} handleReply={handleReply} />
+          <CommentReply
+            commentId={comment.id}
+            handleReply={handleReply}
+            handleSignUp={handleSignUp}
+            handleLogin={handleLogin}
+          />
         )}
       </div>
     ));
@@ -65,7 +72,12 @@ const Comments = ({ comment }) => {
         )}
       </div>
       {replies.length < 1 && replyActive && (
-        <CommentReply commentId={comment.id} handleReply={handleReply} />
+        <CommentReply
+          commentId={comment.id}
+          handleReply={handleReply}
+          handleSignUp={handleSignUp}
+          handleLogin={handleLogin}
+        />
       )}
       <div className="reply-container">
         {comment.replies && nestedReplies(comment.replies)}

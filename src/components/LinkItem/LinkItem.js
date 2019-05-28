@@ -6,7 +6,7 @@ import Likes from "../Likes/Likes";
 
 import "./LinkItem.css";
 
-const LinkItem = ({ feed, handleClick }) => {
+const LinkItem = ({ feed, handleClick, handleSignUp }) => {
   return (
     <div
       className="feed-container"
@@ -27,6 +27,7 @@ const LinkItem = ({ feed, handleClick }) => {
         upLikes={feed.upLikes}
         downLikes={feed.downLikes}
         linkId={feed.id}
+        handleSignUp={handleSignUp}
       />
     </div>
   );

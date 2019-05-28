@@ -76,3 +76,17 @@
 .submit-close:hover {
   opacity: 0.6;
 }
+
+@media screen and (max-width: 750px) {
+  .login-container {
+    top: 15%;
+    width: 95vw;
+    height: 380px;
+  }
+
+  .SignUp-container {
+    top: 15%;
+    width: 95vw;
+    height: 450px;
+  }
+}

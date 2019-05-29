@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from "prop-types";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Likes.css";
@@ -67,6 +68,13 @@ const Likes = ({ upLikes, downLikes, linkId, handleSignUp }) => {
       }}
     </Mutation>
   );
+};
+
+Likes.propTypes = {
+  upLikes: PropTypes.string.isRequired,
+  downLikes: PropTypes.string.isRequired,
+  linkId: PropTypes.string.isRequired,
+  handleSignUp: PropTypes.func.isRequired
 };
 
 export default Likes;

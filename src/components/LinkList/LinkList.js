@@ -1,13 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import InfiniteScroll from "react-infinite-scroll-component";
 import LinkItem from "../LinkItem/LinkItem";
 
 import "./LinkList.css";
 
 const GET_LINKS = gql`
-  query links {
-    links {
+  query links($offset: Int) {
+    links(offset: $offset) {
       title
       body
       id
@@ -22,26 +24,59 @@ const GET_LINKS = gql`
 `;
 
 const LinkList = ({ handleClick, handleSignUp }) => (
-  <Query query={GET_LINKS} pollInterval={60 * 2500}>
-    {({ loading, error, data, startPolling, stopPolling }) => {
+  <Query
+    query={GET_LINKS}
+    variables={{
+      offset: 0
+    }}
+    // pollInterval={60 * 2500}
+  >
+    {({ loading, error, data, fetchMore, startPolling, stopPolling }) => {
       if (loading) return "Loading...";
       if (error) return `Error! ${error.message}`;
       const { links } = data;
 
       return (
-        <section className="link-list-container">
-          {links.map(link => (
-            <LinkItem
-              key={link.id}
-              feed={link}
-              handleClick={handleClick}
-              handleSignUp={handleSignUp}
-            />
-          ))}
+        <section className="link-list-container" id="scrollableDiv">
+          <InfiniteScroll
+            dataLength={links.length}
+            next={() => {
+              fetchMore({
+                variables: {
+                  offset: data.links.length
+                },
+                updateQuery: (prev, { fetchMoreResult }) => {
+                  if (!fetchMoreResult) return prev;
+                  return Object.assign({}, prev, {
+                    links: [...prev.links, ...fetchMoreResult.links]
+                  });
+                }
+              });
+            }}
+            hasMore
+            loader={<h3 className="loading-pag">Loading...</h3>}
+            scrollableTarget="scrollableDiv"
+            scrollThreshold="100px"
+            className="test"
+          >
+            {links.map(link => (
+              <LinkItem
+                key={link.id}
+                feed={link}
+                handleClick={handleClick}
+                handleSignUp={handleSignUp}
+              />
+            ))}
+          </InfiniteScroll>
         </section>
       );
     }}
   </Query>
 );
+
+LinkList.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired
+};
 
 export default LinkList;

@@ -2,7 +2,7 @@ import { gql } from "apollo-server-express";
 
 const schema = gql`
   type Query {
-    links: [Link!]!
+    links(first: Int, offset: Int): [Link!]!
     link(id: ID!): Link
     users: [User!]
     user(id: ID!): User

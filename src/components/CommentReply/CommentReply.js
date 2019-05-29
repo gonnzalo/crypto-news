@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import "./CommentReply.css";
 
 import gql from "graphql-tag";
@@ -101,6 +102,13 @@ const CommentReply = ({
       }}
     </Mutation>
   );
+};
+
+CommentReply.propTypes = {
+  commentId: PropTypes.string.isRequired,
+  handleReply: PropTypes.func.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired
 };
 
 export default CommentReply;

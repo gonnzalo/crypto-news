@@ -23,6 +23,7 @@
     "react": "^16.8.6",
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
+    "react-infinite-scroll-component": "^4.5.2",
     "react-router": "^5.0.0",
     "react-scripts": "3.0.0",
     "subscriptions-transport-ws": "^0.9.16"

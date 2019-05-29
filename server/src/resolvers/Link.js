@@ -1,7 +1,11 @@
 export default {
   Query: {
-    links: async (message, args, { models }) => {
-      return models.Link.findAll();
+    links: async (message, { offset, limit = 20 }, { models }) => {
+      return models.Link.findAll({
+        offset,
+        limit,
+        order: [["createdAt", "DESC"]]
+      });
     },
     link: async (parent, { id }, { models }) => {
       return models.Link.findByPk(id);

@@ -8,7 +8,8 @@ export default {
       return models.Comment.findAll({
         where: {
           linkId
-        }
+        },
+        order: [["createdAt", "DESC"]]
       });
     }
   },
@@ -36,23 +37,6 @@ export default {
         return comment;
       }
     ),
-    // replyComment: combineResolvers(
-    //   isAuthenticated,
-    //   async (parent, { text, commentId, linkId }, { models, me }) => {
-    //     const reply = await models.Comment.create({
-    //       text,
-    //       userId: me.id,
-    //       commentId,
-    //       linkId
-    //     });
-
-    //     console.log(comment);
-    //     pubsub.publish(EVENTS.COMMENT.REPLAY, {
-    //       commentCreated: reply
-    //     });
-    //     return reply;
-    //   }
-    // ),
 
     editComment: combineResolvers(
       isAuthenticated,

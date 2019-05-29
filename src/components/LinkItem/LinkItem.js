@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import timeDifferenceForDate from "../utils";
@@ -31,6 +32,12 @@ const LinkItem = ({ feed, handleClick, handleSignUp }) => {
       />
     </div>
   );
+};
+
+LinkItem.propTypes = {
+  feed: PropTypes.shape({ root: PropTypes.string.isRequired }).isRequired,
+  handleClick: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired
 };
 
 export default LinkItem;

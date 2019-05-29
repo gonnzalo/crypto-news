@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 
@@ -101,6 +102,12 @@ const CommentPage = ({ linkId, handleSignUp, handleLogin }) => {
       </Query>
     </>
   );
+};
+
+CommentPage.propTypes = {
+  linkId: PropTypes.string.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired
 };
 
 export default CommentPage;

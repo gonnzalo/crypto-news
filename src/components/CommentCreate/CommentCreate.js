@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import "./CommentCreate.css";
 
 import gql from "graphql-tag";
@@ -85,6 +86,12 @@ const CommentCreate = ({ linkId, handleLogin, handleSignUp }) => {
       }}
     </Mutation>
   );
+};
+
+CommentCreate.propTypes = {
+  linkId: PropTypes.string.isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired
 };
 
 export default CommentCreate;

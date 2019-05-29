@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import timeDifferenceForDate from "../utils";
 
 import CommentReply from "../CommentReply/CommentReply";
@@ -84,6 +85,12 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
       </div>
     </div>
   );
+};
+
+Comments.propTypes = {
+  comment: PropTypes.shape({ root: PropTypes.string.isRequired }).isRequired,
+  handleLogin: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired
 };
 
 export default Comments;

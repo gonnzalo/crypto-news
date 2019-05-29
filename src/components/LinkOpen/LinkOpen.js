@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import { Html5Entities } from "html-entities";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -43,6 +43,12 @@ const LinkOpen = ({ feed, handleSignUp, handleLogin }) => {
       )}
     </section>
   );
+};
+
+LinkOpen.propTypes = {
+  feed: PropTypes.shape({ root: PropTypes.string.isRequired }),
+  handleLogin: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired
 };
 
 export default LinkOpen;

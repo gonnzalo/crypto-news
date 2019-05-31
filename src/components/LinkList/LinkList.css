@@ -26,6 +26,10 @@
   overflow-y: scroll;
 }
 
+.link-list-query {
+  width: 100%;
+}
+
 .fix-infinite {
   overflow: hidden !important;
 }

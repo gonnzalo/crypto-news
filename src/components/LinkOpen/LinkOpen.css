@@ -7,6 +7,43 @@
   padding: 1.3rem;
 }
 
+.link-open-hide {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  bottom: 0;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.link-open-show {
+  right: 0;
+}
+
+.btn-back-container {
+  border-bottom: 1px solid rgb(80, 80, 80);
+  margin-bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-back {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-size: 500;
+  color: rgb(199, 188, 195);
+  cursor: pointer;
+}
+
+.icon-btn-back {
+  margin-right: 1rem;
+  margin-left: 0.2rem;
+}
+
 .open-title-link {
   text-decoration: none;
   cursor: pointer;

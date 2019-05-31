@@ -1,18 +1,46 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Html5Entities } from "html-entities";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faExternalLinkAlt,
+  faAngleLeft,
+  faChevronLeft
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CommentPage from "../CommentPage/CommentPage";
-
 import timeDifferenceForDate from "../utils";
+
 import "./LinkOpen.css";
 
 const htmlEntities = new Html5Entities();
 
-const LinkOpen = ({ feed, handleSignUp, handleLogin }) => {
+const LinkOpen = ({
+  feed,
+  handleSignUp,
+  handleLogin,
+  isLinkOpen,
+  handleClick
+}) => {
+  const mediaQueryMedium = useMediaQuery("(max-width:1200px)");
   return (
-    <section className="link-open-container">
+    <section
+      className={`link-open-container  ${
+        mediaQueryMedium ? "link-open-hide" : ""
+      } ${isLinkOpen ? "link-open-show" : ""}`}
+    >
+      {mediaQueryMedium && (
+        <div className="btn-back-container">
+          <button type="button" onClick={handleClick} className="btn-back">
+            <FontAwesomeIcon icon={faAngleLeft} className="icon-btn-back" />
+            BACK
+          </button>
+          <button type="button" onClick={handleClick} className="btn-back">
+            HOME
+          </button>
+        </div>
+      )}
+
       {feed && (
         <>
           <div className="open-title-container">

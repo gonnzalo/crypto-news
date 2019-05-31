@@ -1,6 +1,6 @@
 .feed-likes {
   text-align: right;
-  flex: 1 0 10%;
+  flex: 1 0 auto;
   color: var(--color-text-1);
 }
 

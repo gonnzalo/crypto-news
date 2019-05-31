@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Header from "./components/Header/Header";
 
@@ -17,9 +18,14 @@ const App = () => {
   const [linkOpen, setLinkOpen] = useState(null);
   const [isSignUpActive, setIsSignUpActive] = useState(false);
   const [isLoginActive, setIsLoginActive] = useState(false);
+  const [isLinkOpen, setIsLinkOpen] = useState(false);
+  const mediaQueryMedium = useMediaQuery("(max-width:1200px)");
 
   const handleClick = link => {
     setLinkOpen(link);
+    if (mediaQueryMedium) {
+      setIsLinkOpen(!isLinkOpen);
+    }
   };
 
   const handleSignUp = () => {
@@ -51,6 +57,8 @@ const App = () => {
             feed={linkOpen}
             handleSignUp={handleSignUp}
             handleLogin={handleLogin}
+            isLinkOpen={isLinkOpen}
+            handleClick={handleClick}
           />
         </div>
         {isSignUpActive && (

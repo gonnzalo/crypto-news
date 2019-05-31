@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import InfiniteScroll from "react-infinite-scroll-component";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import LinkItem from "../LinkItem/LinkItem";
 import LoadingProgress from "../LoadingProgress";
 
@@ -26,6 +27,7 @@ const GET_LINKS = gql`
 
 const LinkList = ({ handleClick, handleSignUp }) => {
   const [hasMore, setHasMore] = useState(true);
+  const mediaQueryMedium = useMediaQuery("(max-width:1200px)");
 
   return (
     <Query
@@ -41,7 +43,12 @@ const LinkList = ({ handleClick, handleSignUp }) => {
         const { links } = data;
 
         return (
-          <section className="link-list-container" id="scrollableDiv">
+          <section
+            className={`link-list-container ${
+              mediaQueryMedium ? "link-list-query" : ""
+            }`}
+            id="scrollableDiv"
+          >
             <InfiniteScroll
               dataLength={links.length}
               next={() => {

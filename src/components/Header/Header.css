@@ -20,7 +20,7 @@
 .nav-container {
   width: 91%;
   margin: 0 auto;
-  height: 90px;
+  height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,7 +35,7 @@
 
 .logo h1 {
   color: var(--color-logo);
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   padding-top: 0.2rem;
   padding-bottom: 0.5rem;
   letter-spacing: 3px;
@@ -43,9 +43,10 @@
   border-bottom: 1px solid var(--color-logo);
 }
 .App-logo {
-  align-items: center;
-  height: 70px;
-  width: 55px;
+  align-self: center;
+  margin-bottom: 0.4rem;
+  height: 55px;
+  width: auto;
   margin-right: 1rem;
   fill: var(--color-logo);
   transform: rotate(45deg);

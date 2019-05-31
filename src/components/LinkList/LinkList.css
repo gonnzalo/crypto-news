@@ -12,6 +12,13 @@
   background-color: #1a1b1d;
 }
 
+@media all and (max-width: 480px) {
+  ::-webkit-scrollbar {
+    width: 9px;
+    background-color: #1a1b1d;
+  }
+}
+
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);

@@ -10,6 +10,14 @@
   transition: 0.3s;
 }
 
+@media all and (max-width: 480px) {
+  .feed-container {
+    padding: 1rem 0.6rem;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+  }
+}
+
 .feed-container:hover {
   background-color: #24262e;
   transform: translateY(-2px);
@@ -45,4 +53,11 @@
 
 .icon-link:hover {
   color: var(--color-hover-blue);
+}
+
+@media all and (max-width: 480px) {
+  .feed-title {
+    order: -1;
+    margin-bottom: 0.2rem;
+  }
 }

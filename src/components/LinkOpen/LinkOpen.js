@@ -23,6 +23,7 @@ const LinkOpen = ({
   handleClick
 }) => {
   const mediaQueryMedium = useMediaQuery("(max-width:1200px)");
+  // console.log(feed.id);
   return (
     <section
       className={`link-open-container  ${

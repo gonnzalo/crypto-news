@@ -8,3 +8,9 @@
   margin: 0 auto;
   display: flex;
 }
+
+@media all and (max-width: 480px) {
+  .app-container {
+    height: calc(100vh - 71px);
+  }
+}

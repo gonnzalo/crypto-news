@@ -52,6 +52,33 @@
   transform: rotate(45deg);
 }
 
+@media all and (max-width: 480px) {
+  .header {
+    background-color: #18181f;
+  }
+  .nav-container {
+    width: 90%;
+    height: 70px;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+    border-bottom: none;
+    margin: auto;
+    padding: 0;
+  }
+  .App-logo {
+    height: 40px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
 .nav-list {
   display: flex;
   justify-content: space-around;

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { ReactComponent as Rocket } from "./rocket.svg";
 import CurrentUser from "../CurrentUser/CurrentUser";
 import UserContext from "../../UserContext";
@@ -9,6 +10,7 @@ import "./hamburger.css";
 const Header = ({ handleSignUp, handleLogin, closeLogin }) => {
   const isLoggedIn = useContext(UserContext);
   const [isBurgerActive, setBurger] = useState(false);
+  const mediaQueryBurger = useMediaQuery("(max-width:750px)");
 
   const handleCLik = () => {
     setBurger(!isBurgerActive);
@@ -21,7 +23,23 @@ const Header = ({ handleSignUp, handleLogin, closeLogin }) => {
         <div className="logo">
           <Rocket className="App-logo" />
           <h1>Crypto News</h1>
+          {mediaQueryBurger && (
+            <button
+              className={`${
+                isBurgerActive
+                  ? "is-active hamburger hamburger--elastic"
+                  : "hamburger hamburger--elastic"
+              }`}
+              type="button"
+              onClick={handleCLik}
+            >
+              <span className="hamburger-box">
+                <span className="hamburger-inner" />
+              </span>
+            </button>
+          )}
         </div>
+
         <nav
           className={`${isBurgerActive ? "navbar navbar-active" : "navbar"}`}
         >
@@ -54,19 +72,6 @@ const Header = ({ handleSignUp, handleLogin, closeLogin }) => {
             )}
           </ul>
         </nav>
-        <button
-          className={`${
-            isBurgerActive
-              ? "is-active hamburger hamburger--elastic"
-              : "hamburger hamburger--elastic"
-          }`}
-          type="button"
-          onClick={handleCLik}
-        >
-          <span className="hamburger-box">
-            <span className="hamburger-inner" />
-          </span>
-        </button>
       </div>
     </header>
   );

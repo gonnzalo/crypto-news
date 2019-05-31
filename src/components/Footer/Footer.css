@@ -9,6 +9,12 @@ footer {
   overflow-x: auto;
 }
 
+@media all and (max-width: 480px) {
+  footer {
+    display: none;
+  }
+}
+
 .footer-container {
   width: 97%;
   margin: 0 auto;

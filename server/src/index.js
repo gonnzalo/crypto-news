@@ -4,10 +4,11 @@ import { ApolloServer, AuthenticationError } from "apollo-server-express";
 import cors from "cors";
 import axios from "axios";
 import http from "http";
-
 import schema from "./schema";
 import resolvers from "./resolvers";
 import models, { sequelize } from "./models";
+
+const { Op } = require("sequelize");
 
 require("dotenv").config();
 
@@ -95,6 +96,17 @@ const fetchData = async () => {
   }
 };
 
+// delete old news after 2 days...
+const deleteOld = () => {
+  models.Link.destroy({
+    where: {
+      createdAt: {
+        [Op.lt]: new Date(new Date() - 48 * 60 * 60 * 1000)
+      }
+    }
+  });
+};
+
 const isTest = !!process.env.TEST_DATABASE;
 
 sequelize.sync({ force: isTest }).then(async () => {
@@ -109,6 +121,12 @@ sequelize.sync({ force: isTest }).then(async () => {
       imgUrl: "img-test.com"
     });
   }
+
+  deleteOld();
+
+  setInterval(() => {
+    deleteOld();
+  }, 48 * 60 * 60 * 1000);
 
   fetchData();
 

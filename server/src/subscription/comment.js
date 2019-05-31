@@ -1,6 +1,4 @@
 const CREATED = "CREATED";
-const DELETED = "DELETED";
 const EDITED = "EDITED";
-const REPLIED = "REPLIED";
 
-export { CREATED, DELETED, EDITED, REPLIED };
+export { CREATED, EDITED };

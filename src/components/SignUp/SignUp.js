@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import LoadingProgress from "../LoadingProgress";
 
 import "./SignUp.css";
 
@@ -106,7 +107,7 @@ const SignUp = ({ handleSignUp, closeLogin, handleLogin }) => {
                   Log in
                 </button>
               </span>
-              {loading && <p>Loading...</p>}
+              {loading && <LoadingProgress />}
               {error && <p>Error, Please try again</p>}
             </div>
           );

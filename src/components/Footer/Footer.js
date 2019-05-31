@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LoadingProgress from "../LoadingProgress";
 import "./Footer.css";
 
 const Footer = () => {
@@ -42,7 +43,7 @@ const Footer = () => {
       {isError && <div>Something went wrong ...</div>}
 
       {isLoading ? (
-        <div />
+        <LoadingProgress />
       ) : (
         <div className="footer-container">
           {data.map(item => (

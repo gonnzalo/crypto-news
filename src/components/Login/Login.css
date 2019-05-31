@@ -77,6 +77,11 @@
   opacity: 0.6;
 }
 
+.already-user {
+  display: table;
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 750px) {
   .login-container {
     top: 15%;

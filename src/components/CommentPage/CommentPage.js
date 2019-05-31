@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import LoadingProgress from "../LoadingProgress";
 
 import "./CommentPage.css";
 
@@ -69,7 +70,15 @@ const CommentPage = ({ linkId, handleSignUp, handleLogin }) => {
       />
       <Query query={GET_COMMENTS} variables={{ linkId }}>
         {({ loading, error, subscribeToMore, data: { comments } }) => {
-          if (loading) return "Loading...";
+          const styleSpinner = {
+            margin: "300px"
+          };
+          if (loading)
+            return (
+              <div style={styleSpinner}>
+                <LoadingProgress />
+              </div>
+            );
           if (error) return `Error! ${error.message}`;
 
           if (!isSub) {

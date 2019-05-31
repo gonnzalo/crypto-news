@@ -1,6 +1,5 @@
 import { combineResolvers } from "graphql-resolvers";
 import { isAuthenticated } from "./authorization";
-import pubsub, { EVENTS } from "../subscription";
 
 export default {
   Query: {
@@ -39,17 +38,8 @@ export default {
           }
           return result;
         });
-        pubsub.publish(EVENTS.LIKE.CREATED, {
-          likeCreated: like
-        });
         return like;
       }
     )
-  },
-
-  Subscription: {
-    likeCreated: {
-      subscribe: () => pubsub.asyncIterator(EVENTS.LIKE.CREATED)
-    }
   }
 };

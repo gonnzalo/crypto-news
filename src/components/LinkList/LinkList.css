@@ -26,6 +26,6 @@
   overflow-y: scroll;
 }
 
-.test {
+.fix-infinite {
   overflow: hidden !important;
 }

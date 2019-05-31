@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import LoadingProgress from "../LoadingProgress";
 
 import "./Login.css";
 
@@ -73,7 +74,7 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                 <input type="submit" value="Sign in" className="submit-form" />
               </form>
               <span className="already-user">
-                Don&apos;t have an account?
+                Don&apos;t have an account?{" "}
                 <button
                   type="button"
                   className="btn-form-link"
@@ -83,7 +84,7 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                   New Account
                 </button>
               </span>
-              {loading && <p>Loading...</p>}
+              {loading && <LoadingProgress />}
               {error && <p>Error, Please try again</p>}
             </div>
           );

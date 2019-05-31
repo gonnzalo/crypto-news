@@ -5,6 +5,7 @@ import "./CommentReply.css";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import UserContext from "../../UserContext";
+import LoadingProgress from "../LoadingProgress";
 
 const ADD_REPLY = gql`
   mutation($text: String!, $commentId: ID!, $isReply: Boolean!) {
@@ -41,7 +42,7 @@ const CommentReply = ({
   return (
     <Mutation mutation={ADD_REPLY}>
       {(addReply, { loading, error }) => {
-        if (loading) return "Loading...";
+        if (loading) return <LoadingProgress />;
         if (error) return `Error! ${error.message}`;
         return isLoggedIn ? (
           <div className="comments-container">

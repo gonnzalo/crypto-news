@@ -43,7 +43,7 @@ const schema = gql`
     ): Comment!
     replyComment(text: String!, commentId: ID!): Comment!
     editComment(id: ID!, text: String!): Comment!
-    deleteComment(id: ID!): Boolean!
+    deleteComment(id: ID!): Comment!
   }
   type Token {
     token: String!
@@ -60,7 +60,6 @@ const schema = gql`
     commentReplied: Comment
     commentDeleted: Comment
     commentEdited: Comment
-    likeCreated: Like
   }
 
   type Comment {

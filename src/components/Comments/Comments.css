@@ -1,34 +1,45 @@
 .reply-container {
-  margin-left: 1rem;
-  padding-left: 1rem;
-  border-left: 1px solid rgb(87, 87, 87);
+  margin-left: 0.5rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid rgb(46, 44, 44);
+}
+
+.comment-container {
+  margin-top: 0.3rem;
+  padding: 0 0.5rem 0 0.8rem;
+  border-radius: 4px;
+  background-color: rgba(22, 22, 24, 0.712);
 }
 
 .comment-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.8rem;
 }
 
 .comment-user {
+  margin-top: 0.7rem;
   color: var(--color-user);
 }
 
 .comment-text {
-  margin: 0.5rem 3rem 0.5rem 1rem;
-  font-size: 0.9rem;
+  margin: 0.4rem 0.5rem 0.4rem 0.4rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .comment-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.1rem 0.5rem 0.7rem 0rem;
 }
 
 .button-reply {
   background-color: transparent;
   border: none;
   outline: none;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
   color: var(--color-text-3);
   cursor: pointer;
 }
@@ -37,9 +48,91 @@
   color: var(--color-hover-blue);
 }
 
+.edit-container {
+  margin-left: auto;
+}
+
+.button-edit {
+  font-size: 0.8rem;
+}
+
+.button-edit:hover {
+  color: var(--color-btn-edit);
+}
+
+.button-delete {
+  font-size: 0.8rem;
+  margin-left: 1rem;
+}
+
+.button-delete:hover {
+  color: var(--color-btn-red);
+}
+
 .time-ago {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   color: var(--color-text-3);
   padding-top: 0.1rem;
   font-size: 0.8rem;
+}
+
+.userOwner {
+  background-color: rgb(11, 13, 20);
+  border: 1px solid rgba(46, 107, 66, 0.055);
+}
+
+.delete-container {
+  border-radius: 0 0 6px 6px;
+  padding: 0.5rem;
+  background-color: #20222cad;
+  color: #ddd;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.btns-delete {
+  margin-left: 0.3rem;
+  flex: 1;
+}
+
+.cancel-delete {
+  padding: 0.3rem 0rem;
+  width: 50%;
+  border: none;
+  border-top-left-radius: 1px;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  color: var(--color-btn-blue);
+  background-color: transparent;
+  border: 1px solid var(--color-btn-blue);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cancel-delete:hover {
+  background-color: #22c1dd18;
+}
+
+.delete-comment {
+  width: 50%;
+  border: 1px solid transparent;
+  padding: 0.3rem 0rem;
+  color: var(--color-btn-red);
+  letter-spacing: 2px;
+  text-transform: capitalize;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-comment:hover {
+  border: 1px solid rgba(243, 51, 51, 0.61);
+  background-color: rgba(243, 51, 51, 0.055);
+}
+
+.delete-style {
+  color: var(--color-text-3);
+  font-style: italic;
+  opacity: 0.8;
 }

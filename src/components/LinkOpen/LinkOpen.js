@@ -4,6 +4,7 @@ import { Html5Entities } from "html-entities";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CommentPage from "../CommentPage/CommentPage";
+
 import timeDifferenceForDate from "../utils";
 import "./LinkOpen.css";
 

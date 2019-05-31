@@ -59,15 +59,16 @@ export default {
       isAuthenticated,
       isCommentOwner,
       async (parent, { id }, { models }) => {
-        const comment = await models.Comment.findByPk(id);
-        const deleted = await models.Comment.destroy({ where: { id } });
-        if (deleted) {
-          pubsub.publish(EVENTS.COMMENT.DELETED, {
-            commentDeleted: comment
-          });
-          return deleted;
-        }
-        return deleted;
+        let comment = await models.Comment.update(
+          { text: "-- Comment Delete --" },
+          { where: { id }, returning: true, plain: true }
+        );
+        [, comment] = comment;
+
+        pubsub.publish(EVENTS.COMMENT.EDITED, {
+          commentEdited: comment
+        });
+        return comment;
       }
     )
   },
@@ -89,16 +90,8 @@ export default {
     commentCreated: {
       subscribe: () => pubsub.asyncIterator(EVENTS.COMMENT.CREATED)
     },
-    commentReplied: {
-      subscribe: () => pubsub.asyncIterator(EVENTS.COMMENT.REPLIED)
-    },
     commentEdited: {
       subscribe: () => pubsub.asyncIterator(EVENTS.COMMENT.EDITED)
-    },
-    commentDeleted: {
-      subscribe: () => {
-        return pubsub.asyncIterator(EVENTS.COMMENT.DELETED);
-      }
     }
   }
 };

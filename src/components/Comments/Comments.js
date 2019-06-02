@@ -76,7 +76,9 @@ const Reply = ({
         </div>
         <div className="comment-text">
           <p
-            className={reply.text === "-- Comment Delete --" && "delete-style"}
+            className={
+              reply.text === "-- Comment Delete --" ? "delete-style" : ""
+            }
           >
             {reply.text}
           </p>
@@ -188,8 +190,9 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
           <>
             <div
               key={comment.id}
-              className={`comment-container ${comment.user.id === id &&
-                "userOwner"}`}
+              className={`comment-container ${
+                comment.user.id === id ? "userOwner" : ""
+              }`}
             >
               <div className="comment-header">
                 <span className="comment-user">{comment.user.username}</span>
@@ -200,7 +203,9 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
               <div className="comment-text">
                 <p
                   className={
-                    comment.text === "-- Comment Delete --" && "delete-style"
+                    comment.text === "-- Comment Delete --"
+                      ? "delete-style"
+                      : ""
                   }
                 >
                   {comment.text}

@@ -34,13 +34,13 @@
 }
 
 .logo h1 {
-  color: var(--color-logo);
+  color: var(--color-user-1);
   font-size: 1.5rem;
   padding-top: 0.2rem;
   padding-bottom: 0.5rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--color-logo);
+  border-bottom: 1px solid var(--color-user-1);
 }
 .App-logo {
   align-self: center;
@@ -48,11 +48,11 @@
   height: 55px;
   width: auto;
   margin-right: 1rem;
-  fill: var(--color-logo);
+  fill: var(--color-user-1);
   transform: rotate(45deg);
 }
 
-@media all and (max-width: 480px) {
+@media all and (max-width: 767px) {
   .header {
     background-color: #18181f;
   }
@@ -67,7 +67,7 @@
   }
 
   .logo h1 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     border-bottom: none;
     margin: auto;
     padding: 0;

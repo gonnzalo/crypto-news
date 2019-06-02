@@ -60,7 +60,12 @@ const COMMENTS_SUBSCRIPTION = gql`
 
 let isSub = null;
 
-const CommentPage = ({ linkId, handleSignUp, handleLogin }) => {
+const CommentPage = ({
+  linkId,
+  handleSignUp,
+  handleLogin,
+  updateCommentsCount
+}) => {
   return (
     <>
       <CommentCreate
@@ -68,7 +73,11 @@ const CommentPage = ({ linkId, handleSignUp, handleLogin }) => {
         handleSignUp={handleSignUp}
         handleLogin={handleLogin}
       />
-      <Query query={GET_COMMENTS} variables={{ linkId }}>
+      <Query
+        query={GET_COMMENTS}
+        variables={{ linkId }}
+        fetchPolicy="network-only"
+      >
         {({ loading, error, subscribeToMore, data: { comments } }) => {
           const styleSpinner = {
             margin: "300px"
@@ -99,14 +108,21 @@ const CommentPage = ({ linkId, handleSignUp, handleLogin }) => {
             });
           }
 
-          return comments.map(comment => (
-            <Comments
-              comment={comment}
-              key={comment.id}
-              handleSignUp={handleSignUp}
-              handleLogin={handleLogin}
-            />
-          ));
+          let countReply = 0;
+          return comments.map((comment, index) => {
+            countReply += comment.replies.length;
+            if (comments.length - 1 === index) {
+              updateCommentsCount(comments.length, countReply);
+            }
+            return (
+              <Comments
+                comment={comment}
+                key={comment.id}
+                handleSignUp={handleSignUp}
+                handleLogin={handleLogin}
+              />
+            );
+          });
         }}
       </Query>
     </>

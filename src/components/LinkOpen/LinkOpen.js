@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Html5Entities } from "html-entities";
 import {
   faExternalLinkAlt,
   faAngleLeft,
-  faChevronLeft
+  faComments,
+  faComment
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CommentPage from "../CommentPage/CommentPage";
 import timeDifferenceForDate from "../utils";
+import Likes from "../Likes/Likes";
 
 import "./LinkOpen.css";
 
@@ -22,8 +24,13 @@ const LinkOpen = ({
   isLinkOpen,
   handleClick
 }) => {
+  const [commentsCount, setCommentsCount] = useState(0);
   const mediaQueryMedium = useMediaQuery("(max-width:1200px)");
-  // console.log(feed.id);
+
+  const updateCommentsCount = (countComment, countReplies) => {
+    setCommentsCount(countComment + countReplies);
+  };
+
   return (
     <section
       className={`link-open-container  ${
@@ -32,11 +39,19 @@ const LinkOpen = ({
     >
       {mediaQueryMedium && (
         <div className="btn-back-container">
-          <button type="button" onClick={handleClick} className="btn-back">
+          <button
+            type="button"
+            onClick={() => handleClick(null)}
+            className="btn-back"
+          >
             <FontAwesomeIcon icon={faAngleLeft} className="icon-btn-back" />
             BACK
           </button>
-          <button type="button" onClick={handleClick} className="btn-back">
+          <button
+            type="button"
+            onClick={() => handleClick(null)}
+            className="btn-back"
+          >
             HOME
           </button>
         </div>
@@ -59,14 +74,16 @@ const LinkOpen = ({
               </a>
             </span>
           </div>
-          {/* <div className="open-image">
-            <img src={feed.imgUrl} alt="news" />
-          </div> */}
           <p className="open-body">{htmlEntities.decode(feed.body)}</p>
+          <div className="Comments-icon-container">
+            <FontAwesomeIcon icon={faComment} />
+            <span className="comments-count"> {commentsCount} comments</span>
+          </div>
           <CommentPage
             linkId={feed.id}
             handleSignUp={handleSignUp}
             handleLogin={handleLogin}
+            updateCommentsCount={updateCommentsCount}
           />
           <div />
         </>

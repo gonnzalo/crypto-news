@@ -28,6 +28,22 @@ export default {
       { username, email, password },
       { models, secret }
     ) => {
+      await models.User.findOne({ where: { username } }).then(user => {
+        if (user) {
+          throw new UserInputError("Username already in use");
+        }
+      });
+
+      await models.User.findOne({ where: { email } }).then(user => {
+        if (user) {
+          throw new UserInputError("Email already in use");
+        }
+      });
+
+      if (password.length < 7) {
+        throw new AuthenticationError("password to short");
+      }
+
       const user = await models.User.create({
         username,
         email,
@@ -41,7 +57,7 @@ export default {
       const user = await models.User.findByLogin(login);
 
       if (!user) {
-        throw new UserInputError("No user found with this login credentials.");
+        throw new UserInputError("No user found.");
       }
 
       const isValid = await user.validatePassword(password);

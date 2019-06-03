@@ -46,7 +46,6 @@
   padding: 0.5rem;
   border-radius: 3px;
   border: none;
-  color: #fff;
   font-size: 1.2rem;
   background-color: var(--color-user-1);
   color: var(--color-secundary-0);
@@ -80,6 +79,19 @@
 .already-user {
   display: table;
   margin: 0 auto;
+}
+
+.error-users {
+  margin-top: 1rem;
+}
+
+@media all and (max-width: 480px) {
+  .submit-form {
+    min-width: 100%;
+  }
+  .input-form {
+    min-width: 100%;
+  }
 }
 
 @media screen and (max-width: 750px) {

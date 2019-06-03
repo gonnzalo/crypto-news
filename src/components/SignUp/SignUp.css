@@ -14,9 +14,6 @@
   color: white;
 }
 
-.already-user {
-}
-
 .btn-form-link {
   background-color: transparent;
   border: none;
@@ -26,4 +23,16 @@
 
 .btn-form-link:hover {
   opacity: 0.8;
+}
+
+@media all and (max-width: 320px) {
+  .SignUp-container {
+    min-height: calc(100% - 100px);
+  }
+}
+
+@media all and (min-width: 321px) and (max-width: 360px) {
+  .SignUp-container {
+    min-height: calc(100% - 140px);
+  }
 }

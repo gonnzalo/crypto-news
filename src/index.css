@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat|Raleway");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 html {
   box-sizing: border-box;
@@ -14,12 +14,14 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
+  --font: "Montserrat", sans-serif;
+
   --color-primary-0: #1c1d1f;
   --color-primary-1: #0b0c0f;
   --color-primary-2: #0f0f14;

@@ -1,4 +1,5 @@
 .header {
+  font-family: var(--font-heading);
   border-bottom: 1px solid rgb(53, 53, 53);
   background-color: var(--color-primary-2);
   text-decoration: none;

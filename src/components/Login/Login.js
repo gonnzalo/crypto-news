@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import LoadingProgress from "../LoadingProgress";
 
 import "./Login.css";
@@ -17,10 +18,11 @@ const SIGN_IN = gql`
 const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const mediaQuerySmall = useMediaQuery("(max-width:480px)");
 
   return (
     <>
-      <Mutation mutation={SIGN_IN}>
+      <Mutation mutation={SIGN_IN} errorPolicy="all">
         {(signIn, { loading, error, data }) => {
           if (data) {
             const { token } = data.signIn;
@@ -30,14 +32,16 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
           }
           return (
             <div className="login-container">
-              <button
-                type="button"
-                className="submit-close"
-                name="submit-close"
-                onClick={closeLogin}
-              >
-                x
-              </button>
+              {!mediaQuerySmall && (
+                <button
+                  type="button"
+                  className="submit-close"
+                  name="submit-close"
+                  onClick={closeLogin}
+                >
+                  x
+                </button>
+              )}
               <form
                 onSubmit={e => {
                   signIn({ variables: { login, password } });
@@ -46,7 +50,7 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                 className="form-container"
               >
                 <label htmlFor="login" className="label-form">
-                  User
+                  {!mediaQuerySmall && "User"}
                   <input
                     name="login"
                     id="login"
@@ -59,7 +63,7 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                 </label>
 
                 <label htmlFor="password" className="label-form">
-                  Password
+                  {!mediaQuerySmall && "Password"}
                   <input
                     name="password"
                     id="password"
@@ -85,7 +89,14 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                 </button>
               </span>
               {loading && <LoadingProgress />}
-              {error && <p>Error, Please try again</p>}
+              {error && (
+                <div className="error-users">
+                  Error:{" "}
+                  {error.graphQLErrors.map(({ message }, i) => (
+                    <span key={i}>{message}</span>
+                  ))}
+                </div>
+              )}
             </div>
           );
         }}

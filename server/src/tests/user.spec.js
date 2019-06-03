@@ -45,7 +45,7 @@ describe("mutations", () => {
       expect(result.data).to.eql(expectedResult);
     });
   });
-  describe("createComment(text: String!, linkId: ID!): Comment!", () => {
+  describe("createComment(text: String!, linkId: ID!,  isReply: Boolean!): Comment!", () => {
     it("return Comment", async () => {
       const expectedResult = {
         data: {
@@ -57,7 +57,8 @@ describe("mutations", () => {
       const result = await userApi.createComment(
         {
           linkId: 1,
-          text: "test comment"
+          text: "test comment",
+          isReply: false
         },
         token
       );
@@ -83,11 +84,13 @@ describe("mutations", () => {
       expect(result.data).to.eql(expectedResult);
     });
   });
-  describe("deleteComment(id: ID!): Boolean!", () => {
-    it("return true", async () => {
+  describe("deleteComment(id: ID!): Comment!", () => {
+    it("return -- Comment Delete --", async () => {
       const expectedResult = {
         data: {
-          deleteComment: true
+          deleteComment: {
+            text: "-- Comment Delete --"
+          }
         }
       };
       const result = await userApi.deleteComment(

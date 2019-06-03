@@ -56,7 +56,7 @@ export const likeLink = async (variables, token) =>
     },
     {
       headers: {
-        "x-token": token
+        authorization: token
       }
     }
   );
@@ -66,8 +66,8 @@ export const createComment = async (variables, token) =>
     API_URL,
     {
       query: `
-      mutation($linkId: ID!, $text: String!) {
-        createComment(linkId: $linkId, text: $text) {
+      mutation($linkId: ID!, $text: String!  $isReply: Boolean!) {
+        createComment(linkId: $linkId, text: $text,  isReply: $isReply) {
           text
         }
       }
@@ -76,7 +76,7 @@ export const createComment = async (variables, token) =>
     },
     {
       headers: {
-        "x-token": token
+        authorization: token
       }
     }
   );
@@ -96,7 +96,7 @@ export const editComment = async (variables, token) =>
     },
     {
       headers: {
-        "x-token": token
+        authorization: token
       }
     }
   );
@@ -107,14 +107,16 @@ export const deleteComment = async (variables, token) =>
     {
       query: `
       mutation($id: ID!) {
-        deleteComment(id: $id)
+        deleteComment(id: $id) {
+            text
+        }
       }
       `,
       variables
     },
     {
       headers: {
-        "x-token": token
+        authorization: token
       }
     }
   );

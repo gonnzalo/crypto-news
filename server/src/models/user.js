@@ -1,4 +1,5 @@
 import bcrypt from "bcrypt";
+import { AuthenticationError, UserInputError } from "apollo-server";
 
 const user = (sequelize, DataTypes) => {
   const User = sequelize.define("user", {
@@ -12,7 +13,10 @@ const user = (sequelize, DataTypes) => {
     },
     email: {
       type: DataTypes.STRING,
-      unique: true,
+      unique: {
+        args: true,
+        message: "Email must be unique."
+      },
       allowNull: false,
       validate: {
         notEmpty: true,

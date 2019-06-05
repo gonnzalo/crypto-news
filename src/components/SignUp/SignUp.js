@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -126,6 +127,12 @@ const SignUp = ({ handleSignUp, closeLogin, handleLogin }) => {
       </Mutation>
     </>
   );
+};
+
+SignUp.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  closeLogin: PropTypes.func.isRequired,
+  handleSignUp: PropTypes.func.isRequired
 };
 
 export default SignUp;

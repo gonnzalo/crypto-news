@@ -77,7 +77,8 @@ const CommentEdit = ({ commentId, handleEdit, text }) => {
 
 CommentEdit.propTypes = {
   commentId: PropTypes.string.isRequired,
-  handleEdit: PropTypes.func.isRequired
+  handleEdit: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired
 };
 
 export default CommentEdit;

@@ -15,7 +15,6 @@ const GET_COMMENTS = gql`
       id
       text
       createdAt
-      isReply
       user {
         id
         username
@@ -39,13 +38,11 @@ const COMMENTS_SUBSCRIPTION = gql`
       id
       text
       createdAt
-      isReply
       user {
         id
         username
       }
       replies {
-        isReply
         id
         text
         createdAt
@@ -73,11 +70,7 @@ const CommentPage = ({
         handleSignUp={handleSignUp}
         handleLogin={handleLogin}
       />
-      <Query
-        query={GET_COMMENTS}
-        variables={{ linkId }}
-        fetchPolicy="network-only"
-      >
+      <Query query={GET_COMMENTS} variables={{ linkId }}>
         {({ loading, error, subscribeToMore, data: { comments } }) => {
           const styleSpinner = {
             margin: "300px"
@@ -86,6 +79,7 @@ const CommentPage = ({
             return (
               <div style={styleSpinner}>
                 <LoadingProgress />
+                KJSDG
               </div>
             );
           if (error) return `Error! ${error.message}`;
@@ -109,6 +103,9 @@ const CommentPage = ({
           }
 
           let countReply = 0;
+          if (comments && comments.length === 0) {
+            updateCommentsCount(comments.length, countReply);
+          }
           return comments.map((comment, index) => {
             countReply += comment.replies.length;
             if (comments.length - 1 === index) {
@@ -132,7 +129,8 @@ const CommentPage = ({
 CommentPage.propTypes = {
   linkId: PropTypes.string.isRequired,
   handleLogin: PropTypes.func.isRequired,
-  handleSignUp: PropTypes.func.isRequired
+  handleSignUp: PropTypes.func.isRequired,
+  updateCommentsCount: PropTypes.func.isRequired
 };
 
 export default CommentPage;

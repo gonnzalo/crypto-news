@@ -34,7 +34,7 @@ const CommentCreate = ({ linkId, handleLogin, handleSignUp }) => {
   const isLoggedIn = useContext(UserContext);
   return (
     <Mutation mutation={ADD_COMMENT}>
-      {(addComment, { loading, error, data }) => {
+      {addComment => {
         return isLoggedIn ? (
           <div className="comments-container">
             <form

@@ -35,7 +35,17 @@ const LinkItem = ({ feed, handleClick, handleSignUp }) => {
 };
 
 LinkItem.propTypes = {
-  feed: PropTypes.shape({ root: PropTypes.string.isRequired }).isRequired,
+  feed: PropTypes.shape({
+    title: PropTypes.string,
+    body: PropTypes.string,
+    id: PropTypes.string,
+    source: PropTypes.string,
+    url: PropTypes.string,
+    upLikes: PropTypes.string,
+    downLikes: PropTypes.string,
+    createdAt: PropTypes.string,
+    imgUrl: PropTypes.string
+  }).isRequired,
   handleClick: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired
 };

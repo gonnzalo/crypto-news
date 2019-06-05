@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Query, Mutation } from "react-apollo";
 import gql from "graphql-tag";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import timeDifferenceForDate from "../utils";
 
 import CommentReply from "../CommentReply/CommentReply";
@@ -52,6 +53,7 @@ const Reply = ({
   const [deleteReplyActive, setDeleteReplyActive] = useState(false);
   const [replyActive, setReplyActive] = useState(false);
   const [editActive, setEditActive] = useState(false);
+  const mediaQuerySmall = useMediaQuery("(max-width:680px)");
 
   const handleReply = () => {
     return setReplyActive(false);
@@ -114,14 +116,16 @@ const Reply = ({
         </div>
         {deleteReplyActive && (
           <div className="delete-container">
-            <span> Are you sure you want to delete your comment ?</span>
+            {!mediaQuerySmall && (
+              <span> Are you sure you want to delete your comment ?</span>
+            )}
             <span className="btns-delete">
               <Mutation
                 mutation={DELETE_COMMENT}
                 variables={{ commentId: reply.id }}
                 onCompleted={() => setDeleteReplyActive(!setDeleteReplyActive)}
               >
-                {(deleteComment, { loading, error, data }) => {
+                {deleteComment => {
                   return (
                     <button
                       type="button"
@@ -167,6 +171,7 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
   const [replyActive, setReplyActive] = useState(false);
   const [editActive, setEditActive] = useState(false);
   const [deleteActive, setDeleteActive] = useState(false);
+  const mediaQuerySmall = useMediaQuery("(max-width:680px)");
 
   const { replies } = comment;
 
@@ -244,14 +249,16 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
             </div>
             {deleteActive && (
               <div className="delete-container">
-                <span> Are you sure you want to delete your comment ?</span>
+                {!mediaQuerySmall && (
+                  <span> Are you sure you want to delete your comment ?</span>
+                )}
                 <span className="btns-delete">
                   <Mutation
                     mutation={DELETE_COMMENT}
                     variables={{ commentId: comment.id }}
                     onCompleted={() => setDeleteActive(!setDeleteActive)}
                   >
-                    {(deleteComment, { loading, error, data }) => {
+                    {deleteComment => {
                       return (
                         <button
                           type="button"
@@ -312,13 +319,30 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
 };
 
 Comments.propTypes = {
-  comment: PropTypes.shape({ root: PropTypes.string.isRequired }).isRequired,
+  comment: PropTypes.shape({
+    text: PropTypes.string,
+    id: PropTypes.string,
+    replies: PropTypes.array,
+    createdAt: PropTypes.string,
+    user: PropTypes.shape({
+      id: PropTypes.string,
+      username: PropTypes.string
+    })
+  }).isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired
 };
 
 Reply.propTypes = {
-  reply: PropTypes.shape({ root: PropTypes.string.isRequired }).isRequired,
+  reply: PropTypes.shape({
+    text: PropTypes.string,
+    id: PropTypes.string,
+    createdAt: PropTypes.string,
+    user: PropTypes.shape({
+      id: PropTypes.string,
+      username: PropTypes.string
+    })
+  }).isRequired,
   handleLogin: PropTypes.func.isRequired,
   handleSignUp: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,

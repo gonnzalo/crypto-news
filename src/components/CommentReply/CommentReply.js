@@ -4,7 +4,6 @@ import "./CommentReply.css";
 
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import UserContext from "../../UserContext";
 import LoadingProgress from "../LoadingProgress";
 
@@ -39,7 +38,6 @@ const CommentReply = ({
 }) => {
   const [comment, setComment] = useState("");
   const isLoggedIn = useContext(UserContext);
-  const mediaQuerySmall = useMediaQuery("(max-width:480px)");
 
   return (
     <Mutation mutation={ADD_REPLY}>

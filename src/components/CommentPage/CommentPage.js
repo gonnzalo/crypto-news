@@ -79,7 +79,6 @@ const CommentPage = ({
             return (
               <div style={styleSpinner}>
                 <LoadingProgress />
-                KJSDG
               </div>
             );
           if (error) return `Error! ${error.message}`;

@@ -13,6 +13,9 @@
 
 /src/components/Auth
 
+now.json
+
+
 # misc
 .DS_Store
 .env.local

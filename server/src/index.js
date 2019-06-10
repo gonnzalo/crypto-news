@@ -28,6 +28,8 @@ const getMe = async req => {
 };
 
 const server = new ApolloServer({
+  introspection: true,
+  playground: true,
   typeDefs: schema,
   resolvers,
   formatError: error => {
@@ -87,7 +89,7 @@ const fetchData = async () => {
         }
       }).then(([user, created]) => {
         if (created) {
-          // console.log("new link was created");
+          // console.log("new link was created")
         }
       });
     });

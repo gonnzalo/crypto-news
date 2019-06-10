@@ -37,16 +37,14 @@ const SignUp = ({ handleSignUp, closeLogin, handleLogin }) => {
           }
           return (
             <div className="SignUp-container">
-              {!mediaQuerySmall && (
-                <button
-                  type="button"
-                  className="submit-close"
-                  name="submit-close"
-                  onClick={closeLogin}
-                >
-                  x
-                </button>
-              )}
+              <button
+                type="button"
+                className="submit-close"
+                name="submit-close"
+                onClick={closeLogin}
+              >
+                x
+              </button>
               <form
                 onSubmit={e => {
                   signUp({ variables: { username, email, password } }).then(

@@ -36,7 +36,8 @@
     "eject": "react-scripts eject",
     "start:dev": "npm run start:client & npm run start:server",
     "start:client": "npm run start",
-    "start:server": "(cd ./server && npm run start)"
+    "start:server": "(cd ./server && npm run start)",
+    "now-build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "crypto-news-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,8 @@
     "test": "mocha --require @babel/register 'src/**/*.spec.js'"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "gonnzalo",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/node": "^7.2.2",

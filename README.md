@@ -1,68 +1,79 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Crypto News
 
-## Available Scripts
+Crypto News is a website with the lastest cryptocurrencies news. Build with React, Apollo, Express, Graphql and PostgreSQL.
 
-In the project directory, you can run:
+## Demo
 
-### `npm start`
+[https://crypto-news.gonnzalo.now.sh/](https://crypto-news.gonnzalo.now.sh/)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+- Lastest cryptocurrencies news feed from different sources
+- Users can add likes and comment to their favourites news
+- Displays top ten cryptocurrencies price and 24hs price change.
+- Full responsive
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> This guide assumes you already have [Node.js](https://nodejs.org/en/) and [Postgres](https://www.postgresql.org/) installed.
 
-### `npm run build`
+To run the website locally in the development mode please follows this guide:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1- Clone the repository and install the node modules:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```shell
+git clone https://github.com/gonnzalo/crypto-news
+cd crypto-news/
+git install && cd server/ git install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2- Inside the `./server/` folder Create a `.env` file pass on these env variables:
 
-### `npm run eject`
+```shell
+DATABASE=example
+DATABASE_USER=example
+DATABASE_PASSWORD=example
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+SECRET=example
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3- to start please run on the main folder
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```shell
+npm run start:dev
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4- Open `http://localhost:3000` to view it in the browser.
 
-## Learn More
+## Test
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To test the server on the `./server/` folder run:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```shell
+npm run test-server
+```
 
-### Code Splitting
+and them also inside `./server/` in a new terminal tab run:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+```shell
+npm run test
+```
 
-### Analyzing the Bundle Size
+you can also view the graphql queries, mutations and subcriptions on the graphql playground in [here](https://crypto-news-server.herokuapp.com/graphql)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Sources
 
-### Making a Progressive Web App
+- [CryptoCompare min-api](https://min-api.cryptocompare.com/): This API is using to get all the news feed.
+- [CoinGecko API](https://www.coingecko.com/en/api): this API is used to get the top 10 cryptocurrencies price data.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Contributing
 
-### Advanced Configuration
+Contributions, issues and feature requests are welcome.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Author
 
-### Deployment
+- [gonnzalo](https://)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## License
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[MIT](https://choosealicense.com/licenses/mit/)

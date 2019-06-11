@@ -1,6 +1,8 @@
 {
   "name": "crypto-news",
   "version": "0.1.0",
+  "author": "gonnzalo",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.18",

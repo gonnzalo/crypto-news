@@ -1,4 +1,6 @@
 .main-app {
+  position: relative;
+  overflow: hidden;
   background-color: var(--color-primary-1);
 }
 

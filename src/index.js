@@ -17,11 +17,11 @@ import * as serviceWorker from "./serviceWorker";
 import App from "./App";
 
 const httpLink = new HttpLink({
-  uri: "http://localhost:8000/graphql"
+  uri: "https://crypto-news-server.herokuapp.com/graphql"
 });
 
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:8000/graphql`,
+  uri: `wss://crypto-news-server.herokuapp.com/graphql`,
   options: {
     reconnect: true
   }

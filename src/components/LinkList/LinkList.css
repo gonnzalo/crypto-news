@@ -31,6 +31,7 @@
   width: 70%;
   background-color: var(--color-primary-1);
   overflow-y: scroll;
+  overscroll-behavior: contain;
 }
 
 .link-list-query {

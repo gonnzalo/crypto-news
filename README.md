@@ -1,6 +1,6 @@
 # Crypto News
 
-Crypto News is a website with the lastest cryptocurrencies news. Build with React, Apollo, Express, Graphql and PostgreSQL.
+Crypto News is a single page app with the lastest cryptocurrencies news. Build with React, Apollo, Express, Graphql and PostgreSQL.
 
 ## Demo
 

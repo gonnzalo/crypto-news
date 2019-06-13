@@ -23,7 +23,8 @@ const httpLink = new HttpLink({
 const wsLink = new WebSocketLink({
   uri: `wss://crypto-news-server.herokuapp.com/graphql`,
   options: {
-    reconnect: true
+    reconnect: true,
+    timeout: 30000
   }
 });
 

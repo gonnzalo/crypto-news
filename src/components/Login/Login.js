@@ -37,6 +37,7 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                 className="submit-close"
                 name="submit-close"
                 onClick={closeLogin}
+                aria-label="close"
               >
                 x
               </button>
@@ -81,6 +82,7 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                   type="button"
                   className="btn-form-link"
                   onClick={handleSignUp}
+                  aria-label="new account"
                 >
                   {" "}
                   New Account
@@ -91,6 +93,7 @@ const Login = ({ handleLogin, closeLogin, handleSignUp }) => {
                 <div className="error-users">
                   Error:{" "}
                   {error.graphQLErrors.map(({ message }, i) => (
+                    // eslint-disable-next-line react/no-array-index-key
                     <span key={i}>{message}</span>
                   ))}
                 </div>

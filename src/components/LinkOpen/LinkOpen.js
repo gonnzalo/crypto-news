@@ -41,6 +41,7 @@ const LinkOpen = ({
             type="button"
             onClick={() => handleClick(null)}
             className="btn-back"
+            aria-label="back"
           >
             <FontAwesomeIcon icon={faAngleLeft} className="icon-btn-back" />
             BACK
@@ -49,6 +50,7 @@ const LinkOpen = ({
             type="button"
             onClick={() => handleClick(null)}
             className="btn-back"
+            aria-label="home"
           >
             HOME
           </button>

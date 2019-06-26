@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "normalize.css";
+import "typeface-montserrat";
 import "./index.css";
 import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-client";

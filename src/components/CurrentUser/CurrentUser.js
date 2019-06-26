@@ -35,6 +35,7 @@ const CurrentUser = () => {
                 localStorage.removeItem("x-token");
                 window.location.reload();
               }}
+              aria-label="log out"
             >
               <FontAwesomeIcon className="icon-logout" icon={faSignInAlt} />
               Log out

@@ -68,6 +68,7 @@ const CommentCreate = ({ linkId, handleLogin, handleSignUp }) => {
                 type="button"
                 onClick={handleLogin}
                 className="btn-form-link"
+                aria-label="login"
               >
                 login
               </button>{" "}
@@ -76,6 +77,7 @@ const CommentCreate = ({ linkId, handleLogin, handleSignUp }) => {
                 type="button"
                 onClick={handleSignUp}
                 className="btn-form-link"
+                aria-label="sing up"
               >
                 sign-up
               </button>{" "}

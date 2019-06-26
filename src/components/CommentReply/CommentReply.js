@@ -69,6 +69,7 @@ const CommentReply = ({
                   type="button"
                   className="btn-cancel"
                   onClick={handleReply}
+                  aria-label="Cancel Reply"
                 >
                   Cancel
                 </button>
@@ -84,6 +85,7 @@ const CommentReply = ({
                 type="button"
                 onClick={handleLogin}
                 className="btn-form-link"
+                aria-label="login"
               >
                 login
               </button>{" "}
@@ -92,6 +94,7 @@ const CommentReply = ({
                 type="button"
                 onClick={handleSignUp}
                 className="btn-form-link"
+                aria-label="sign up"
               >
                 sign-up
               </button>{" "}

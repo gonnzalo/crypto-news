@@ -32,6 +32,7 @@ const Header = ({ handleSignUp, handleLogin, closeLogin }) => {
               }`}
               type="button"
               onClick={handleCLik}
+              aria-label="open menu"
             >
               <span className="hamburger-box">
                 <span className="hamburger-inner" />
@@ -55,6 +56,7 @@ const Header = ({ handleSignUp, handleLogin, closeLogin }) => {
                     type="button"
                     className="btn-login"
                     onClick={handleLogin}
+                    aria-label="sign in"
                   >
                     Sign In
                   </button>
@@ -64,6 +66,7 @@ const Header = ({ handleSignUp, handleLogin, closeLogin }) => {
                     type="button"
                     className="btn-signup"
                     onClick={handleSignUp}
+                    aria-label="sign up new user"
                   >
                     New Account
                   </button>

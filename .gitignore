@@ -31,3 +31,5 @@ yarn-error.log*
 # auth
 
 /src/components/Auth
+
+now.json

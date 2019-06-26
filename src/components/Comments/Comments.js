@@ -91,6 +91,7 @@ const Reply = ({
               type="button"
               className="button-reply"
               onClick={() => setReplyActive(!replyActive)}
+              aria-label="Reply"
             >
               Reply{" "}
             </button>
@@ -101,6 +102,7 @@ const Reply = ({
                 type="button"
                 className="button-reply button-edit"
                 onClick={() => setEditActive(!editActive)}
+                aria-label="Edit"
               >
                 Edit
               </button>
@@ -108,6 +110,7 @@ const Reply = ({
                 type="button"
                 className="button-reply button-delete"
                 onClick={() => setDeleteReplyActive(!deleteReplyActive)}
+                aria-label="Delete"
               >
                 Delete
               </button>
@@ -131,6 +134,7 @@ const Reply = ({
                       type="button"
                       className="delete-comment"
                       onClick={deleteComment}
+                      aria-label="Delete"
                     >
                       Delete
                     </button>
@@ -141,6 +145,7 @@ const Reply = ({
                 type="button"
                 className="cancel-delete"
                 onClick={() => setDeleteReplyActive(!deleteReplyActive)}
+                aria-label="Cancel"
               >
                 Cancel
               </button>
@@ -189,6 +194,7 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
       {({ data }) => {
         let id = null;
         if (data.me) {
+          // eslint-disable-next-line prefer-destructuring
           id = data.me.id;
         }
         return (
@@ -222,6 +228,7 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
                     type="button"
                     className="button-reply"
                     onClick={() => setReplyActive(!replyActive)}
+                    aria-label="Reply"
                   >
                     Reply
                   </button>
@@ -233,6 +240,7 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
                         type="button"
                         className="button-reply button-edit"
                         onClick={() => setEditActive(!editActive)}
+                        aria-label="Edit"
                       >
                         Edit
                       </button>
@@ -240,6 +248,7 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
                         type="button"
                         className="button-reply button-delete"
                         onClick={() => setDeleteActive(!deleteActive)}
+                        aria-label="Delete"
                       >
                         Delete
                       </button>
@@ -264,6 +273,7 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
                           type="button"
                           className="delete-comment"
                           onClick={deleteComment}
+                          aria-label="Delete"
                         >
                           Delete
                         </button>
@@ -274,6 +284,7 @@ const Comments = ({ comment, handleSignUp, handleLogin }) => {
                     type="button"
                     className="cancel-delete"
                     onClick={() => setDeleteActive(!deleteActive)}
+                    aria-label="Cancel"
                   >
                     Cancel
                   </button>

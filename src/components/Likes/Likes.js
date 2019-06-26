@@ -38,6 +38,7 @@ const Likes = ({ upLikes, downLikes, linkId, handleSignUp }) => {
                 }
                 return addLike({ variables: { linkId, isPositive: true } });
               }}
+              aria-label="like"
             >
               <FontAwesomeIcon
                 icon={faThumbsUp}
@@ -56,6 +57,7 @@ const Likes = ({ upLikes, downLikes, linkId, handleSignUp }) => {
                 }
                 return addLike({ variables: { linkId, isPositive: false } });
               }}
+              aria-label="deslike"
             >
               <FontAwesomeIcon
                 icon={faThumbsDown}

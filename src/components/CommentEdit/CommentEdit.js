@@ -62,6 +62,7 @@ const CommentEdit = ({ commentId, handleEdit, text }) => {
                   type="button"
                   className="btn-cancel"
                   onClick={handleEdit}
+                  aria-label="Cancel"
                 >
                   Cancel
                 </button>

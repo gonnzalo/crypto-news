@@ -2,7 +2,9 @@
 
 Crypto News is a single page app with the lastest cryptocurrencies news. Build with React, Apollo, Express, Graphql and PostgreSQL.
 
-## Demo
+![ScreenShot](https://raw.github.com/gonnzalo/personal-website/master/src/images/crypto-news.png)
+
+## Live Demo
 
 [https://crypto-news.gonnzalo.now.sh/](https://crypto-news.gonnzalo.now.sh/)
 

@@ -55,13 +55,13 @@ To test the server on the `./server/` folder run:
 npm run test-server
 ```
 
-and them also inside `./server/` in a new terminal tab run:
+and them inside `./server/` in a new terminal tab run:
 
 ```shell
 npm run test
 ```
 
-you can also view the graphql queries, mutations and subcriptions on the graphql playground in [here](https://crypto-news-server.herokuapp.com/graphql)
+you can also view graphql queries, mutations and subscriptions on the graphql playground in [here](https://crypto-news-server.herokuapp.com/graphql)
 
 ## Sources
 

@@ -26,7 +26,7 @@ To run the website locally in the development mode please follows this guide:
 ```shell
 git clone https://github.com/gonnzalo/crypto-news
 cd crypto-news/
-git install && cd server/ git install
+npm install && cd server/ git install
 ```
 
 2- Inside the `./server/` folder Create a `.env` file pass on these env variables:

@@ -31,7 +31,7 @@
     "graphql-resolvers": "^0.3.3",
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.10.0",
-    "sequelize": "^5.8.5",
+    "sequelize": "^5.15.1",
     "uuid": "^3.3.2"
   }
 }
